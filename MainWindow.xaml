@@ -21,7 +21,7 @@
         <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Top">
             <TextBlock Foreground="White" FontSize="25" FontWeight="Bold"
             Name="Playlist"
-            Text="Lançamentos"/>
+            Text="Lançamentos" Margin="20,10,20,10"/>
             <!-- array da classe Videos -->
             <TextBlock Foreground="White" FontSize="25" Text="IMAGEM"/>
             <TextBlock Foreground="White" FontSize="15" Text="Nome da música"/>
@@ -34,17 +34,21 @@
             <TextBlock Foreground="White" FontSize="10" Text="Autor"/>
         </StackPanel>
 <!-- colocar o media player aqui -->
-        <StackPanel Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center">
-        <Image Margin="20,0,20,0"
-           Source="MediaPlayerINF0996/assets/img/icon.png"/>
+        <StackPanel Grid.Row="0" Grid.Column="0" >
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Image Margin="10,0,10,0" Height="50" Width="50"
+                Source="C:\Users\sathy\OneDrive\Área de Trabalho\trabalhoUI\MediaPlayerINF0996\assets\img\icon.png"/>
+                <TextBlock Foreground="White" FontSize="25" Text="Songfy"/>
+            </StackPanel>
         <Button Margin="20,20,20,20" Name="button" Foreground="White"
-            FontWeight="Bold" Background="#FFFFFF" >Selecionar Playlist</Button>
-    </StackPanel>   
+            FontWeight="Bold"  >Selecionar Playlist</Button>
+        </StackPanel>   
      <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
                 Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"
                 Height="50">
         <MenuItem.Header>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                    <TextBlock Foreground="White" FontSize="25" Text="AQUI ESTÁ O MENU Header"/>
                     <Image Source="MediaPlayerINF0996/assets/img/icon.png"  Height="30"
                     Margin="20,0,0,0" />
                 </StackPanel>
@@ -52,9 +56,9 @@
             <MenuItem.ContextMenu>
 
                 <ContextMenu Background="#1f3d7a" BorderThickness="0" Padding="0">
-            <TextBlock Foreground="White" FontSize="25" Text="AQUI ESTÁ O MENU"/>
 
                     <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Opções">
+            <TextBlock Foreground="White" FontSize="25" Text="AQUI ESTÁ O MENU Context"/>
 
                          <MenuItem.Icon>
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaPlayerINF0996"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1200">
 <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -15,11 +15,11 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="#2f5cb6"/>
-        <Border Grid.Column="1" Background="#1f3d7a"/>
+        <Border Background="#111111"/>
+        <Border Grid.Column="1" Background="#544C4A"/>
         <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#363636"/>
         <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
-            <TextBlock Foreground="White" FontSize="35" FontWeight="Bold"
+            <TextBlock Foreground="White" FontSize="25" FontWeight="Bold"
             Name="Songfy"
             Text="Ouça suas músicas preferidas aqui"/>
             <TextBlock Foreground="White" FontSize="25" Text="Temperatura Hoje - 25o C"/>
@@ -61,7 +61,7 @@
 
      <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
 
-                Background="#1f3d7a" VerticalAlignment="Top" HorizontalAlignment="Right"
+                Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"
 
                 Height="50">
 

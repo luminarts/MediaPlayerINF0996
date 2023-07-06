@@ -34,11 +34,11 @@
             <TextBlock Foreground="White" FontSize="10" Text="Autor"/>
         </StackPanel>
 <!-- colocar o media player aqui -->
-        <StackPanel Grid.Row="0" Grid.Column="0" >
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left">
-                <Image Margin="10,0,10,0" Height="50" Width="50"
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Image Margin="20,20,20,20" Height="80" Width="80"
                 Source="C:\Users\sathy\OneDrive\Área de Trabalho\trabalhoUI\MediaPlayerINF0996\assets\img\icon.png"/>
-                <TextBlock Foreground="White" FontSize="25" Text="Songfy"/>
+                <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="35" Text="Songfy"/>
             </StackPanel>
         <Button Margin="20,20,20,20" Name="button" Foreground="White"
             FontWeight="Bold"  >Selecionar Playlist</Button>

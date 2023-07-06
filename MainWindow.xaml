@@ -5,79 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaPlayerINF0996"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1200">
+        Title="Songfy" Height="900" Width="1400">
 <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Border Background="#111111"/>
+        <Border Background="#323232"/>
         <Border Grid.Column="1" Background="#544C4A"/>
         <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#363636"/>
-        <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Center">
+        <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Top">
             <TextBlock Foreground="White" FontSize="25" FontWeight="Bold"
-            Name="Songfy"
-            Text="Ouça suas músicas preferidas aqui"/>
-            <TextBlock Foreground="White" FontSize="25" Text="Temperatura Hoje - 25o C"/>
-            <TextBlock Foreground="White" FontSize="25" Text="Parcialmente Nublado"/>
-
-            <TextBlock Foreground="White" FontSize="25" Text="Chuva 25%"/>
-
+            Name="Playlist"
+            Text="Lançamentos"/>
+            <!-- array da classe Videos -->
+            <TextBlock Foreground="White" FontSize="25" Text="IMAGEM"/>
+            <TextBlock Foreground="White" FontSize="15" Text="Nome da música"/>
+            <TextBlock Foreground="White" FontSize="15" Text="Autor"/>
         </StackPanel>
-
-
-
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
-
-               HorizontalAlignment="Center" VerticalAlignment="Center">
-
-            <TextBlock Foreground="White" FontSize="25" Text="Máxima: 33o" Margin="0,0,20,0"/>
-
-            <TextBlock Foreground="White" FontSize="25" Text="Máxima: 17o" Margin="0,0,20,0"/>
-
-            <TextBlock Foreground="White" FontSize="25" Text="Sensação Térmica: 26o"/>
-
+                VerticalAlignment="Center">
+            <TextBlock Foreground="White" FontSize="15" Text="IMAGEM" Margin="0,0,40,0"/>
+            <TextBlock Foreground="White" FontSize="10" Text="Nome da música" Margin="0,0,20,0"/>
+            <TextBlock Foreground="White" FontSize="10" Text="Autor"/>
         </StackPanel>
-
-
-
+<!-- colocar o media player aqui -->
         <StackPanel Grid.Row="0" Grid.Column="0"  VerticalAlignment="Center">
-
         <Image Margin="20,0,20,0"
-
-           Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\partially-cloudy.png"/>
-
+           Source="MediaPlayerINF0996/assets/img/icon.png"/>
         <Button Margin="20,20,20,20" Name="button" Foreground="White"
-
-            FontWeight="Bold" Background="#152951" >Selecionar Cidade</Button>
-
+            FontWeight="Bold" Background="#FFFFFF" >Selecionar Playlist</Button>
     </StackPanel>   
-
-
-
      <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
-
                 Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"
-
                 Height="50">
-
         <MenuItem.Header>
-
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
-
-                    <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\menuicon.png"  Height="30"
-
+                    <Image Source="MediaPlayerINF0996/assets/img/icon.png"  Height="30"
                     Margin="20,0,0,0" />
-
                 </StackPanel>
-
         </MenuItem.Header>
-
             <MenuItem.ContextMenu>
+            <TextBlock Foreground="White" FontSize="25" Text="AQUI ESTÁ O MENU"/>
 
                 <ContextMenu Background="#1f3d7a" BorderThickness="0" Padding="0">
 

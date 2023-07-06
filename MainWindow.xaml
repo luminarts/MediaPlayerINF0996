@@ -19,9 +19,9 @@
         <Border Grid.Column="1" Background="#544C4A"/>
         <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#363636"/>
         <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Top">
-            <TextBlock Foreground="White" FontSize="25" FontWeight="Bold"
+            <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"
             Name="Playlist"
-            Text="Lançamentos" Margin="20,10,20,10"/>
+            Text="Lançamentos" Margin="0,10,20,10"/>
             <!-- array da classe Videos -->
             <TextBlock Foreground="White" FontSize="25" Text="IMAGEM"/>
             <TextBlock Foreground="White" FontSize="15" Text="Nome da música"/>
@@ -29,9 +29,12 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
                 VerticalAlignment="Center">
-            <TextBlock Foreground="White" FontSize="15" Text="IMAGEM" Margin="0,0,40,0"/>
-            <TextBlock Foreground="White" FontSize="10" Text="Nome da música" Margin="0,0,20,0"/>
-            <TextBlock Foreground="White" FontSize="10" Text="Autor"/>
+            <Image Margin="40,5,20,5" Height="50" Width="50"
+            Source="C:\Users\sathy\OneDrive\Área de Trabalho\trabalhoUI\MediaPlayerINF0996\assets\img\icon.png"/>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                <TextBlock Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
+                <TextBlock Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
+            </StackPanel>
         </StackPanel>
 <!-- colocar o media player aqui -->
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">

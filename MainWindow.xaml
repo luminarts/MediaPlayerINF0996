@@ -43,10 +43,12 @@
                 Source="C:\Users\sathy\OneDrive\Área de Trabalho\trabalhoUI\MediaPlayerINF0996\assets\img\icon.png"/>
                 <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="35" Text="Songfy"/>
             </StackPanel>
-        <Button Margin="20,20,20,20" Name="button" Foreground="White"
-            FontWeight="Bold"  >Selecionar Playlist</Button>
+        <Button Margin="20,10,20,10" Height="40" Name="MyPlaylist" Foreground="White"
+            FontWeight="Bold" Background="#323232" >My Playlist</Button>
+        <Button Margin="20,10,20,10" Height="40" Name="AboutSongfy" Foreground="White"
+            FontWeight="Bold" Background="#323232" >About Songfy</Button>
         </StackPanel>   
-     <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
+     <!-- <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
                 Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"
                 Height="50">
         <MenuItem.Header>
@@ -57,35 +59,19 @@
                 </StackPanel>
         </MenuItem.Header>
             <MenuItem.ContextMenu>
-
                 <ContextMenu Background="#1f3d7a" BorderThickness="0" Padding="0">
-
                     <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Opções">
-            <TextBlock Foreground="White" FontSize="25" Text="AQUI ESTÁ O MENU Context"/>
-
                          <MenuItem.Icon>
-
                             <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\opcoes.png" Width="24" />
-
                         </MenuItem.Icon>
-
                     </MenuItem>
-
                     <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Sair" >
-
                         <MenuItem.Icon>
-
                             <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\Sair.png" Width="24" />
-
                         </MenuItem.Icon>
-
                     </MenuItem>
-
                 </ContextMenu>
-
             </MenuItem.ContextMenu>
-
-        </MenuItem>
-
+        </MenuItem> -->
     </Grid>
 </Window>

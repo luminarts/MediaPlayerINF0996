@@ -5,8 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaPlayerINF0996"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="Songfy" Height="800" Width="1400">
+<Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#323232"/>
+        <Border Grid.Column="1" Background="#544C4A"/>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#363636"/>
+        <StackPanel Grid.Column="1" Margin="40,0,0,0" VerticalAlignment="Top">
+            <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"
+            Name="Playlist"
+            Text="Lançamentos" Margin="0,10,20,10"/>
+            <!-- array da classe Videos -->
+            <TextBlock Foreground="White" FontSize="25" Text="IMAGEM"/>
+            <TextBlock Foreground="White" FontSize="15" Text="Nome da música"/>
+            <TextBlock Foreground="White" FontSize="15" Text="Autor"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
+                VerticalAlignment="Center">
+            <Image Margin="40,5,20,5" Height="50" Width="50"
+            Source="C:\Users\sathy\OneDrive\Área de Trabalho\trabalhoUI\MediaPlayerINF0996\assets\img\icon.png"/>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                <TextBlock Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
+                <TextBlock Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
+            </StackPanel>
+        </StackPanel>
+<!-- colocar o media player aqui -->
+        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Image Margin="20,20,20,20" Height="80" Width="80"
+                Source="C:\Users\sathy\OneDrive\Área de Trabalho\trabalhoUI\MediaPlayerINF0996\assets\img\icon.png"/>
+                <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="35" Text="Songfy"/>
+            </StackPanel>
+        <Button Margin="20,10,20,10" Height="40" Name="MyPlaylist" Foreground="White"
+            FontWeight="Bold" Background="#323232" >My Playlist</Button>
+        <Button Margin="20,10,20,10" Height="40" Name="AboutSongfy" Foreground="White"
+            FontWeight="Bold" Background="#323232" >About Songfy</Button>
+        </StackPanel>   
+     <!-- <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
+                Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"
+                Height="50">
+        <MenuItem.Header>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                    <TextBlock Foreground="White" FontSize="25" Text="AQUI ESTÁ O MENU Header"/>
+                    <Image Source="MediaPlayerINF0996/assets/img/icon.png"  Height="30"
+                    Margin="20,0,0,0" />
+                </StackPanel>
+        </MenuItem.Header>
+            <MenuItem.ContextMenu>
+                <ContextMenu Background="#1f3d7a" BorderThickness="0" Padding="0">
+                    <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Opções">
+                         <MenuItem.Icon>
+                            <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\opcoes.png" Width="24" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Sair" >
+                        <MenuItem.Icon>
+                            <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\Sair.png" Width="24" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </MenuItem.ContextMenu>
+        </MenuItem> -->
     </Grid>
 </Window>

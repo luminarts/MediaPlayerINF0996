@@ -19,12 +19,24 @@ namespace MediaPlayerINF0996
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {      
         public MainWindow()
         {
             InitializeComponent();
         }
         
+        private void Video1(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");
+            mediaPlayer.Play();
+        }
+        
+        private void Video2(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");
+            mediaPlayer.Play();
+        }
+
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");

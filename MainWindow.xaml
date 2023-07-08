@@ -47,9 +47,9 @@
                 <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="35" Text="Songfy"/>
             </StackPanel>
         <Button Margin="20,10,20,10" Height="40" Name="MyPlaylist" Foreground="White"
-            FontWeight="Bold" Background="#323232" >My Playlist</Button>
+            FontWeight="Bold" Background="#323232" Click="Video1">Video 1</Button>
         <Button Margin="20,10,20,10" Height="40" Name="AboutSongfy" Foreground="White"
-            FontWeight="Bold" Background="#323232" >About Songfy</Button>
+            FontWeight="Bold" Background="#323232"  Click="Video2" >Video 2</Button>
         </StackPanel>   
      <!-- <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
                 Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"

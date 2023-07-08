@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MediaPlayerINF0996
 {
@@ -27,7 +27,7 @@ namespace MediaPlayerINF0996
         
         private void Video1(object sender, RoutedEventArgs e)
         {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\FooFighters-ThePretender.mp4");
+            mediaPlayer.Source = new Uri(Path.GetFullPath(@"assets\videos\FooFighters-ThePretender.mp4"));
             titulo.Text = "Foo Fighters - The Pretender";
             mediaPlayer.Play();
         }

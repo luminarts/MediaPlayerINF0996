@@ -24,5 +24,16 @@ namespace MediaPlayerINF0996
         {
             InitializeComponent();
         }
+        
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");
+            mediaPlayer.Play();
+        }
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            mediaPlayer.Stop();
+        }
     }
 }

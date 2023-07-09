@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MediaPlayerINF0996.ViewModel;
 
 namespace MediaPlayerINF0996
 {
@@ -23,38 +24,8 @@ namespace MediaPlayerINF0996
         public MainWindow()
         {
             InitializeComponent();
-        }
-        
-        private void Video1(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\FooFighters-ThePretender.mp4");
-            titulo.Text = "Foo Fighters - The Pretender";
-            mediaPlayer.Play();
-        }
-        
-        private void Video2(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");
-            titulo.Text = "Sinos";
-            mediaPlayer.Play();
-        }
 
-        private void Video3(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\videoplayback.mp4");
-            titulo.Text = "CG5 - Hi";
-            mediaPlayer.Play();
-        }
-
-        private void PlayButton_Click(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");
-            mediaPlayer.Play();
-        }
-
-        private void StopButton_Click(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Stop();
+            DataContext = new MediaList();
         }
     }
 }

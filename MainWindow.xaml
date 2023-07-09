@@ -38,8 +38,10 @@
                 <TextBlock Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
                 <TextBlock Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
             </StackPanel>
-        <Button Content="Play" Click="PlayButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
-        <Button Content="Stop" Click="StopButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
+        <Button Content="Play" CommandParameter="{Binding}" Command="{Binding Play}" 
+            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
+        <Button Content="Stop" CommandParameter="{Binding}" Command="{Binding Stop}" 
+            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
@@ -51,11 +53,14 @@
             Name="Playlist"
             Text="Lançamentos" Margin="20,10,20,10"/>
         <Button Margin="20,10,20,10" Height="40" Name="Video11" Foreground="White"
-            FontWeight="Bold" Background="#323232" Click="Video1">Video 1</Button>
+            FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video1}"
+            >Video 1</Button>
         <Button Margin="20,10,20,10" Height="40" Name="Video21" Foreground="White"
-            FontWeight="Bold" Background="#323232"  Click="Video2" >Video 2</Button>
+            FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video2}"
+            >Video 2</Button>
         <Button Margin="20,10,20,10" Height="40" Name="Video31" Foreground="White"
-            FontWeight="Bold" Background="#323232"  Click="Video3" >Video 3</Button>
+            FontWeight="Bold" Background="#323232"  CommandParameter="{Binding}" Command="{Binding Video3}" 
+            >Video 3</Button>
         </StackPanel>   
      <!-- <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
                 Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"

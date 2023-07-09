@@ -93,6 +93,7 @@ namespace MediaPlayerINF0996.ViewModel
 		{
 			SelectedMedia = Medias[0];
 			MainWindowRef.titulo.Text = "Foo Fighters - The Pretender";
+			MainWindowRef.mediaPlayer.Source = new Uri(Path.GetFullPath(@"assets\videos\FooFighters-ThePretender.mp4"));
 			MainWindowRef.mediaPlayer.Play();
 		}
 

@@ -24,7 +24,7 @@ namespace MediaPlayerINF0996
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MediaList(this);
+            DataContext = new MediaList();
         }
     }
 }

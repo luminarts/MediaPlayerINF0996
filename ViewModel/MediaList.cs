@@ -15,7 +15,6 @@ namespace MediaPlayerINF0996.ViewModel
     public class MediaList : ObservableObject
     {
         private Media selectedMedia;
-        public MainWindow MainWindowRef {get; set;}
         public Media SelectedMedia
         {
             get {return selectedMedia;}
@@ -31,10 +30,8 @@ namespace MediaPlayerINF0996.ViewModel
         public RelayCommand Video1 {get; set;}
         public RelayCommand Video2 {get; set;}
         public RelayCommand Video3 {get; set;}
-        public MediaList(MainWindow mainWindow)
+        public MediaList()
         {
-            MainWindowRef = mainWindow;
-            MainWindowRef.mediaPlayer.Source = SelectedMedia.MediaPath;
             Medias = new ObservableCollection<Media>();
             PrepareListCollection();
             Play = new RelayCommand(PlayCommand, CanPlayCommand);

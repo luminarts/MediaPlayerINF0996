@@ -49,19 +49,19 @@ namespace MediaPlayerINF0996.ViewModel
             var media1 = new Media
             {
                 Name = "The Pretender",
-                MediaPath = new Uri(Path.GetFullPath(@"..\assets\videos\FooFighters-ThePretender.mp4"))
+                MediaPath = new Uri(Path.GetFullPath(@"assets\videos\FooFighters-ThePretender.mp4"))
             };
 
             var media2 = new Media
             {
                 Name = "The Pretender",
-                MediaPath = new Uri(Path.GetFullPath(@"..\assets\videos\teste.mp4"))
+                MediaPath = new Uri(Path.GetFullPath(@"assets\videos\teste.mp4"))
             };
 
             var media3 = new Media
             {
                 Name = "The Pretender",
-                MediaPath = new Uri(Path.GetFullPath(@"..\assets\videos\videoplayback.mp4"))
+                MediaPath = new Uri(Path.GetFullPath(@"assets\videos\videoplayback.mp4"))
             };
 
             Medias.Add(media1);
@@ -91,7 +91,9 @@ namespace MediaPlayerINF0996.ViewModel
 
         private void Video1Command()
         {
+            Console.WriteLine("oi");
             SelectedMedia = Medias[0];
+            Console.WriteLine(SelectedMedia.MediaPath.ToString());
             WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
             WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
         }

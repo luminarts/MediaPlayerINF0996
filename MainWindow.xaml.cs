@@ -41,6 +41,7 @@ namespace MediaPlayerINF0996
 
             WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this,(r, m) =>
             {
+                Console.WriteLine(m.Value.MediaPath.ToString());
                 mediaPlayer.Source = m.Value.MediaPath;
             });
         }

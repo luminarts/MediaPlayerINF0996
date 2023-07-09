@@ -21,6 +21,9 @@ namespace MediaPlayerINF0996.ViewModel
             set
             {
                 SetProperty(ref selectedMedia, value);
+                Play.NotifyCanExecuteChanged();
+                Stop.NotifyCanExecuteChanged();
+                Pause.NotifyCanExecuteChanged();
             }
         }
         public ObservableCollection<Media> Medias { get; set; }
@@ -68,7 +71,7 @@ namespace MediaPlayerINF0996.ViewModel
 
         private void PlayCommand()
         {
-            MainWindowRef.mediaPlayer.Play();
+            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
         }
 
         public bool CanPlayCommand()
@@ -78,35 +81,51 @@ namespace MediaPlayerINF0996.ViewModel
 
         private void StopCommand()
         {
-            MainWindowRef.mediaPlayer.Stop();
+            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
         }
 
         public bool CanStopCommand()
         {
-            return MainWindowRef.mediaPlayer.Source != null;
+            return SelectedMedia != null;
         }
 
         private void Video1Command()
         {
             SelectedMedia = Medias[0];
-            MainWindowRef.titulo.Text = "Foo Fighters - The Pretender";
-            MainWindowRef.mediaPlayer.Play();
+            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
+            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
         }
 
         private void Video2Command()
         {
             SelectedMedia = Medias[1];
-            MainWindowRef.titulo.Text = "Sinos";
-            MainWindowRef.mediaPlayer.Play();
+            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
+            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
         }
 
         private void Video3Command()
         {
             SelectedMedia = Medias[2];
-            MainWindowRef.titulo.Text = "CG5 - Hi";
-            MainWindowRef.mediaPlayer.Play();
+            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
+            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
         }
-        
+
+        public class PlayRequestedMessage
+        {
+            // Pode adicionar propriedades adicionais, se necessário
+        }
+
+        public class StopRequestedMessage
+        {
+            // Pode adicionar propriedades adicionais, se necessário
+        }
+
+        public class SetNewMediaMessage : ValueChangedMessage<Media>
+        {
+            public SetNewMediaMessage(Media selectedMedia) : base(selectedMedia) {}
+        }
+
+
         /*private void Video2(object sender, RoutedEventArgs e)
         {
             mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");

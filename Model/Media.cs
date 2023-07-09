@@ -7,7 +7,7 @@ namespace MediaPlayerINF0996.Model
     {
         private string name;
         private string icon;
-        private string mediaPath;
+        private Uri mediaPath;
 
         public string Name
         {
@@ -21,7 +21,7 @@ namespace MediaPlayerINF0996.Model
             set {SetProperty(ref icon, value);}
         }
 
-        public string MediaPath
+        public Uri MediaPath
         {
             get {return mediaPath;}
             set {SetProperty(ref mediaPath, value);}

@@ -16,15 +16,15 @@ using MediaPlayerINF0996.ViewModel;
 
 namespace MediaPlayerINF0996
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {      
-        public MainWindow()
-        {
-            InitializeComponent();
-            DataContext = new MediaList();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
+			DataContext = new MediaList(this);
+		}
+	}
 }

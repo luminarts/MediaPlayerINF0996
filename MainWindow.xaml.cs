@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MediaPlayerINF0996.ViewModel;
+using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 
 namespace MediaPlayerINF0996
 {
@@ -25,6 +29,27 @@ namespace MediaPlayerINF0996
         {
             InitializeComponent();
             DataContext = new MediaList();
+
+            WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this,(r, m) =>
+            {
+                mediaPlayer.Play();
+            });
+
+            WeakReferenceMessenger.Default.Register<MediaList.StopRequestedMessage>(this,(r, m) =>
+            {
+                mediaPlayer.Stop();
+            });
+
+            WeakReferenceMessenger.Default.Register<MediaList.PauseRequestedMessage>(this,(r, m) =>
+            {
+                mediaPlayer.Pause();
+            });
+
+            WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this,(r, m) =>
+            {
+                titulo.Text = m.Value.Name;
+                mediaPlayer.Source = m.Value.MediaPath;
+            });
         }
     }
 }

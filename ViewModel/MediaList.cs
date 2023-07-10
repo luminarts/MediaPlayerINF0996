@@ -39,6 +39,7 @@ namespace MediaPlayerINF0996.ViewModel
             PrepareListCollection();
             Play = new RelayCommand(PlayCommand, CanPlayCommand);
             Stop = new RelayCommand(StopCommand, CanStopCommand);
+            Pause = new RelayCommand(PauseCommand, CanPauseCommand);
             Video1 = new RelayCommand(Video1Command);
             Video2 = new RelayCommand(Video2Command);
             Video3 = new RelayCommand(Video3Command);
@@ -54,13 +55,13 @@ namespace MediaPlayerINF0996.ViewModel
 
             var media2 = new Media
             {
-                Name = "The Pretender",
+                Name = "Sinos",
                 MediaPath = new Uri(Path.GetFullPath(@"assets\videos\teste.mp4"))
             };
 
             var media3 = new Media
             {
-                Name = "The Pretender",
+                Name = "CG5 - Hi",
                 MediaPath = new Uri(Path.GetFullPath(@"assets\videos\videoplayback.mp4"))
             };
 
@@ -81,7 +82,7 @@ namespace MediaPlayerINF0996.ViewModel
 
         private void StopCommand()
         {
-            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
+            WeakReferenceMessenger.Default.Send(new StopRequestedMessage());
         }
 
         public bool CanStopCommand()
@@ -89,11 +90,19 @@ namespace MediaPlayerINF0996.ViewModel
             return SelectedMedia != null;
         }
 
+        private void PauseCommand()
+        {
+            WeakReferenceMessenger.Default.Send(new PauseRequestedMessage());
+        }
+
+        public bool CanPauseCommand()
+        {
+            return SelectedMedia != null;
+        }
+
         private void Video1Command()
         {
-            Console.WriteLine("oi");
             SelectedMedia = Medias[0];
-            Console.WriteLine(SelectedMedia.MediaPath.ToString());
             WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
             WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
         }
@@ -122,9 +131,14 @@ namespace MediaPlayerINF0996.ViewModel
             // Pode adicionar propriedades adicionais, se necessário
         }
 
+        public class PauseRequestedMessage
+        {
+            // Pode adicionar propriedades adicionais, se necessário
+        }
+
         public class SetNewMediaMessage : ValueChangedMessage<Media>
         {
-            public SetNewMediaMessage(Media selectedMedia) : base(selectedMedia) {}
+            public SetNewMediaMessage(Media media) : base(media) {}        
         }
 
 

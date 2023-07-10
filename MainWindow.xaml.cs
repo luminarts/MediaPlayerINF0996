@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,9 +40,14 @@ namespace MediaPlayerINF0996
                 mediaPlayer.Stop();
             });
 
+            WeakReferenceMessenger.Default.Register<MediaList.PauseRequestedMessage>(this,(r, m) =>
+            {
+                mediaPlayer.Pause();
+            });
+
             WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this,(r, m) =>
             {
-                Console.WriteLine(m.Value.MediaPath.ToString());
+                titulo.Text = m.Value.Name;
                 mediaPlayer.Source = m.Value.MediaPath;
             });
         }

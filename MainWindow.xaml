@@ -6,45 +6,72 @@
         xmlns:local="clr-namespace:MediaPlayerINF0996"
         mc:Ignorable="d"
         Title="Songfy" Height="800" Width="1400">
-<Grid>
+
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Border Background="#323232"/>
-        <Border Grid.Column="1" Background="#544C4A"/>
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#363636"/>
+
+        <Border Grid.Row="0" Grid.Column="0" Background="#252526"/>
+        <Border Grid.Row="0" Grid.Column="1" Background ="#1F1F1F"/>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#1F1F1F"/>
+        
+        <!--StackPanel Direita-->
         <StackPanel Grid.Column="1" Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center" >
-            <!-- <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"
-            Name="Playlist"
-            Text="Lançamentos" Margin="0,10,20,10"/> -->
-            <!-- array da classe Videos -->
-            <!-- <TextBlock Foreground="White" FontSize="25" Text="IMAGEM"/> -->
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" Text="Selecione um video" x:Name="titulo" Margin="10,10,10,10"/>
             </StackPanel>
             <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
                 LoadedBehavior="Manual" UnloadedBehavior="Stop"  Margin="20,20,20,20" />
         </StackPanel>
+
+        <!--StackPanel Debaixo-->
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
                 VerticalAlignment="Center">
-            <Image Margin="40,5,20,5" Height="50" Width="50"
+            
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal">
+                <Image Margin="40,5,20,5" Height="50" Width="50"
             Source="assets\img\icon.png"/>
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
-                <TextBlock Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
-                <TextBlock Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
+                    <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
+
+                </StackPanel>
             </StackPanel>
-        <Button Content="Play" CommandParameter="{Binding}" Command="{Binding Play}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
-        <Button Content="Stop" CommandParameter="{Binding}" Command="{Binding Stop}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
-        <Button Content="Pause" CommandParameter="{Binding}" Command="{Binding Pause}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
+            <StackPanel Orientation="Horizontal" >
+                <Button Template="{DynamicResource MouseOverTemplate}" x:Name="PreviousButton" Width="30" Height="30" Foreground="Transparent" Background="Transparent" Command="{Binding}" CommandParameter="{Binding Play}" Style="{StaticResource CircularButton}" >
+                    <Polygon Margin="7.5,0,0,0" Points="0,0 -8,5 -8,0 -9,0 -9,10 -8,10 -8,5 0,10"  Fill="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <ToggleButton Margin="10,0,0,0" Template="{StaticResource MouseOverTemplate}" Height="30" Width="30" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="Transparent" Style="{DynamicResource PlayPauseButton}">
+
+                </ToggleButton>
+                <Button Template="{DynamicResource MouseOverTemplate}" Margin="10,0,0,0"  x:Name="NextButton" Width="30" Height="30" Foreground="Transparent" Background="Transparent" Style="{StaticResource CircularButton}" >
+                    <Polygon Margin="2,0,0,0" Points="0,0 8,5 8,0 9,0 9,10 8,10 8,5 0,10"  Fill="White" />
+
+                </Button>
+                <Button Margin="12,0,0,0" Background="Transparent" Foreground="Transparent" BorderBrush="Transparent" Height="14" Width="17" VerticalAlignment="Center" >
+                    <Grid>
+                        <Polygon VerticalAlignment="Center" Points="0,0 -8,5 0,10" Fill="White" />
+                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" Fill="Transparent" Data="M5,0 A5,5,0,0,1,5,5"/>
+                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" Fill="Transparent" Data="M7.5,0 A7.5,7.5,0,0,1,7.5,7.5"/>
+                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" Fill="Transparent" Data="M10,0 A10,10,0,0,1,10,10"/>
+                    </Grid>
+                </Button>
+                
+
+
+
+
+            </StackPanel>
+
         </StackPanel>
+
+        <!--StackPanel Esquerda-->
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <Image Margin="20,20,20,20" Height="80" Width="80"
@@ -54,6 +81,7 @@
         <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"
             Name="Playlist"
             Text="Lançamentos" Margin="20,10,20,10"/>
+        
         <Button Margin="20,10,20,10" Height="40" Name="Video11" Foreground="White"
             FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video1}"
             >Video 1</Button>
@@ -64,30 +92,5 @@
             FontWeight="Bold" Background="#323232"  CommandParameter="{Binding}" Command="{Binding Video3}" 
             >Video 3</Button>
         </StackPanel>   
-     <!-- <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
-                Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"
-                Height="50">
-        <MenuItem.Header>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
-                    <TextBlock Foreground="White" FontSize="25" Text="AQUI ESTÁ O MENU Header"/>
-                    <Image Source="MediaPlayerINF0996/assets/img/icon.png"  Height="30"
-                    Margin="20,0,0,0" />
-                </StackPanel>
-        </MenuItem.Header>
-            <MenuItem.ContextMenu>
-                <ContextMenu Background="#1f3d7a" BorderThickness="0" Padding="0">
-                    <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Opções">
-                         <MenuItem.Icon>
-                            <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\opcoes.png" Width="24" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Sair" >
-                        <MenuItem.Icon>
-                            <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\Sair.png" Width="24" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </ContextMenu>
-            </MenuItem.ContextMenu>
-        </MenuItem> -->
     </Grid>
 </Window>

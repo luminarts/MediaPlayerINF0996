@@ -4,6 +4,86 @@
              xmlns:local="clr-namespace:MediaPlayerINF0996"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        
+
+        <Style x:Key="RoundButton" TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="11"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="CircularButton">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        
+
+        <!--Volume Controller-->
+        <Style x:Key="VolumeSlider" TargetType="Slider">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+        </Style>
+
+        <ControlTemplate x:Key="Play" TargetType="ContentControl">
+            <Grid>
+                <Polygon Margin="2.5,0,0,0" Points="0,0 8,5 0,10"  Fill="White"/>
+            </Grid>
+        </ControlTemplate>
+        
+        <ControlTemplate x:Key="Pause" TargetType="ContentControl">
+            <Grid>
+                <Polygon VerticalAlignment="Center" Points="0,0 0,8 2,8 2,0" Fill="White"/>
+                <Polygon VerticalAlignment="Center" Points="3,0 3,8 5,8 5,0" Fill="White"/>
+            </Grid>
+        </ControlTemplate>
+
+
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#60deb3"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#60deb3"/>
+        <ControlTemplate x:Key="MouseOverTemplate" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="PlayPauseButton" TargetType="ToggleButton">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Content">
+                <Setter.Value>
+                    <Polygon Margin="2.5,0,0,0" Points="0,0 8,5 0,10"  Fill="White"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Grid>
+                                <Polygon Margin="0,0,0,0" Points="0,0 0,10 2,10 2,0"  Fill="White"/>
+                                <Polygon Margin="0,0,0,0" Points="3,0 3,10 5,10 5,0"  Fill="White"/>
+                            </Grid>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+
     </Application.Resources>
 </Application>

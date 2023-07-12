@@ -7,7 +7,7 @@ Criar um Media Player (tocador de vídeos) utilizando o WPF com XAML e C#.
 ## Como executar o programa
 *pré-requisito para executar o programa: Sistema operacional Microsoft Windows
 - Clonar o repositório em uma pasta local: ```git clone https://github.com/luminarts/MediaPlayerINF0996.git```
-- Abra o projeto com o vs code
+- Abra o projeto com o VS Code
 - Execute o projeto pelo terminal com o comando ```dotnet run```
 
 ## Arquitetura da aplicação

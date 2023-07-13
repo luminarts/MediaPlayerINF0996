@@ -50,18 +50,21 @@ namespace MediaPlayerINF0996.ViewModel
             var media1 = new Media
             {
                 Name = "The Pretender",
+                Author = "Foo Fighters",
                 MediaPath = new Uri(Path.GetFullPath(@"assets\videos\FooFighters-ThePretender.mp4"))
             };
 
             var media2 = new Media
             {
                 Name = "Sinos",
+                Author = "Unknown",
                 MediaPath = new Uri(Path.GetFullPath(@"assets\videos\teste.mp4"))
             };
 
             var media3 = new Media
             {
-                Name = "CG5 - Hi",
+                Name = "Hi",
+                Author = "CG5",
                 MediaPath = new Uri(Path.GetFullPath(@"assets\videos\videoplayback.mp4"))
             };
 
@@ -72,6 +75,7 @@ namespace MediaPlayerINF0996.ViewModel
 
         private void PlayCommand()
         {
+            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
             WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
         }
 

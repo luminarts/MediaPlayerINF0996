@@ -6,6 +6,7 @@ namespace MediaPlayerINF0996.Model
     public class Media : ObservableObject
     {
         private string name;
+        private string author;
         private string icon;
         private Uri mediaPath;
 
@@ -13,6 +14,12 @@ namespace MediaPlayerINF0996.Model
         {
             get {return name;}
             set {SetProperty(ref name, value);}
+        }
+
+        public string Author
+        {
+            get {return author;}
+            set {SetProperty(ref author, value);}
         }
 
         public string Icon

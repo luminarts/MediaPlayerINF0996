@@ -51,19 +51,39 @@
                 Source="assets\img\icon.png"/>
                 <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="35" Text="Songfy"/>
             </StackPanel>
-        <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"
-            Name="Playlist"
-            Text="Lançamentos" Margin="20,10,20,10"/>
-        <Button Margin="20,10,20,10" Height="40" Name="Video11" Foreground="White"
-            FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video1}"
-            >Video 1</Button>
-        <Button Margin="20,10,20,10" Height="40" Name="Video21" Foreground="White"
-            FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video2}"
-            >Video 2</Button>
-        <Button Margin="20,10,20,10" Height="40" Name="Video31" Foreground="White"
-            FontWeight="Bold" Background="#323232"  CommandParameter="{Binding}" Command="{Binding Video3}" 
-            >Video 3</Button>
-        </StackPanel>   
+            <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"
+                Name="Playlist"
+                Text="Lançamentos" Margin="20,10,20,10"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                    VerticalScrollBarVisibility="Auto">
+                <Grid x:Name="grid" MinWidth="200" 
+                    Width="{Binding Path=ActualWidth, 
+                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollContentPresenter}}}">
+                    <DataGrid ItemsSource="{Binding Medias}"
+                        AutoGenerateColumns="False"
+                        IsReadOnly="True"
+                        SelectedItem="{Binding SelectedMedia}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1*"/>
+                            <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="1*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </ScrollViewer>
+        </StackPanel>
+
+
+            
+        <!--<Button Margin="20,10,20,10" Height="40" Name="Video11" Foreground="White"
+                FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video1}"
+                >Video 1</Button>
+            <Button Margin="20,10,20,10" Height="40" Name="Video21" Foreground="White"
+                FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video2}"
+                >Video 2</Button>
+            <Button Margin="20,10,20,10" Height="40" Name="Video31" Foreground="White"
+                FontWeight="Bold" Background="#323232"  CommandParameter="{Binding}" Command="{Binding Video3}" 
+                >Video 3</Button>
+        </StackPanel>  --> 
      <!-- <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
                 Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"
                 Height="50">

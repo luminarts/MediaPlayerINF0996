@@ -45,8 +45,6 @@
                 Width="50" Height="25" Margin="5,0,0,0" />
             <Button Content="Pause" CommandParameter="{Binding}" Command="{Binding Pause}" 
                 Width="50" Height="25" Margin="5,0,0,0"/>
-            
-
 
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">

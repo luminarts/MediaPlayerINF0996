@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Windows.UI.ViewManagement;
 using MediaPlayerINF0996.ViewModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -24,28 +25,30 @@ namespace MediaPlayerINF0996
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {      
+    {
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new MediaList();
+            ApplicationView view = ApplicationView.GetForCurrentView();
+            view.TryEnterFullScreenMode();
 
-            WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this,(r, m) =>
+            WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this, (r, m) =>
             {
                 mediaPlayer.Play();
             });
 
-            WeakReferenceMessenger.Default.Register<MediaList.StopRequestedMessage>(this,(r, m) =>
+            WeakReferenceMessenger.Default.Register<MediaList.StopRequestedMessage>(this, (r, m) =>
             {
                 mediaPlayer.Stop();
             });
 
-            WeakReferenceMessenger.Default.Register<MediaList.PauseRequestedMessage>(this,(r, m) =>
+            WeakReferenceMessenger.Default.Register<MediaList.PauseRequestedMessage>(this, (r, m) =>
             {
                 mediaPlayer.Pause();
             });
 
-            WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this,(r, m) =>
+            WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this, (r, m) =>
             {
                 titulo.Text = m.Value.Name;
                 mediaPlayer.Source = m.Value.MediaPath;

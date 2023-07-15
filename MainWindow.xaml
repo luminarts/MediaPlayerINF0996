@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaPlayerINF0996"
         mc:Ignorable="d"
-        Title="Songfy" Height="800" Width="1400">
+        Title="Songfy" Height="800" Width="1400" WindowState="Maximized">
 <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -28,7 +28,10 @@
                 <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" Text="Selecione um video" x:Name="titulo" Margin="10,10,10,10"/>
             </StackPanel>
             <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
-                LoadedBehavior="Manual" UnloadedBehavior="Stop"  Margin="20,20,20,20" />
+                LoadedBehavior="Manual" UnloadedBehavior="Stop" MediaOpened="mediaPlayer_MediaOpened" 
+                MediaEnded="mediaPlayer_MediaEnded"  Margin="20,20,20,20" Width="1300" Height="500" />
+                <Slider x:Name="progressBar" Value="0" Maximum="1" VerticalAlignment="Bottom"
+                Margin="10,10,10,10" Width="900" ValueChanged="Slider_ValueChanged" />
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
                 VerticalAlignment="Center">

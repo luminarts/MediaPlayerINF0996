@@ -17,6 +17,7 @@ using MediaPlayerINF0996.ViewModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
+using System.Windows.Threading;
 
 namespace MediaPlayerINF0996
 {
@@ -28,10 +29,16 @@ namespace MediaPlayerINF0996
         public MainWindow()
         {
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            // timer.Start();
+            
             DataContext = new MediaList();
 
             WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this,(r, m) =>
             {
+                timer.Start();
                 mediaPlayer.Play();
             });
 
@@ -51,5 +58,27 @@ namespace MediaPlayerINF0996
                 mediaPlayer.Source = m.Value.MediaPath;
             });
         }
+
+        private void mediaPlayer_MediaOpened(object sender, RoutedEventArgs e)
+        {
+            progressBar.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+        }
+
+        private void mediaPlayer_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            progressBar.Value = 0;
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var newPosition = TimeSpan.FromSeconds(progressBar.Value);
+            mediaPlayer.Position = newPosition;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            progressBar.Value = mediaPlayer.Position.TotalSeconds;
+        }
+
     }
 }

@@ -13,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Windows.UI.ViewManagement;
 using MediaPlayerINF0996.ViewModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -30,8 +29,6 @@ namespace MediaPlayerINF0996
         {
             InitializeComponent();
             DataContext = new MediaList();
-            ApplicationView view = ApplicationView.GetForCurrentView();
-            view.TryEnterFullScreenMode();
 
             WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this, (r, m) =>
             {

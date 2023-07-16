@@ -17,6 +17,7 @@ using MediaPlayerINF0996.ViewModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
+using System.Windows.Threading;
 
 namespace MediaPlayerINF0996
 {
@@ -28,10 +29,18 @@ namespace MediaPlayerINF0996
         public MainWindow()
         {
             InitializeComponent();
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (sender, e) =>
+            {
+                slider.Value = mediaPlayer.Position.TotalSeconds;
+            };
+            
             DataContext = new MediaList();
 
             WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this,(r, m) =>
             {
+                timer.Start();
                 mediaPlayer.Play();
             });
 
@@ -50,6 +59,19 @@ namespace MediaPlayerINF0996
                 titulo.Text = m.Value.Name;
                 mediaPlayer.Source = m.Value.MediaPath;
             });
+            
+            mediaPlayer.MediaOpened += (sender, e) =>
+            {
+                slider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            };
+            mediaPlayer.MediaEnded += (sender, e) =>
+            {
+                slider.Value = 0;
+            };
+            slider.ValueChanged += (sender, e) =>
+            {
+                mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
+            };
         }
     }
 }

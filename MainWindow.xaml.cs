@@ -65,12 +65,10 @@ namespace MediaPlayerINF0996
             {
                 slider.Value = 0;
             };
-        }
-
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            var newPosition = TimeSpan.FromSeconds(slider.Value);
-            mediaPlayer.Position = newPosition;
+            slider.ValueChanged += (sender, e) =>
+            {
+                mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
+            };
         }
 
         private void Timer_Tick(object sender, EventArgs e)

@@ -28,9 +28,8 @@
                 <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" Text="Selecione um video" x:Name="titulo" Margin="10,10,10,10"/>
             </StackPanel>
             <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
-                LoadedBehavior="Manual" UnloadedBehavior="Stop"  Margin="20,20,20,20" Width="1300" Height="500" />
-                <Slider x:Name="slider" Value="0" Maximum="1" VerticalAlignment="Bottom"
-                Margin="10,10,10,10" Width="900" ValueChanged="Slider_ValueChanged" />
+                LoadedBehavior="Manual" UnloadedBehavior="Stop" Margin="20,20,20,20" Width="1300" Height="500" />
+                <Slider x:Name="slider" Margin="10,10,10,10" Width="900" Value="{Binding mediaPlayer.Position, Mode=TwoWay}" Maximum="1" />
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
                 VerticalAlignment="Center">

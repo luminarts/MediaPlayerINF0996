@@ -73,6 +73,5 @@ namespace MediaPlayerINF0996
                 mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
             };
         }
-
     }
 }

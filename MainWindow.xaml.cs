@@ -59,11 +59,6 @@ namespace MediaPlayerINF0996
                 titulo.Text = m.Value.Name;
                 mediaPlayer.Source = m.Value.MediaPath;
             });
-
-            WeakReferenceMessenger.Default.Register<MediaList.UpdateRequestedMessage>(this,(r, m) =>
-            {
-                mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
-            });
             
             mediaPlayer.MediaOpened += (sender, e) =>
             {

@@ -36,7 +36,7 @@
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
                 VerticalAlignment="Center">
             <Image Margin="40,5,20,5" Height="50" Width="50"
-            Source="assets\img\icon.png"/>
+            Source="https://github.com/luminarts/MediaPlayerINF0996/blob/main/assets/img/icon.png?raw=true"/>
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
                 <TextBlock Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
                 <TextBlock Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
@@ -51,7 +51,7 @@
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <Image Margin="20,20,20,20" Height="80" Width="80"
-                Source="assets\img\icon.png"/>
+                Source="https://github.com/luminarts/MediaPlayerINF0996/blob/main/assets/img/icon.png?raw=true"/>
                 <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="35" Text="Songfy"/>
             </StackPanel>
             <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"

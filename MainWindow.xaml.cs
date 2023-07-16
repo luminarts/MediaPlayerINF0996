@@ -31,7 +31,10 @@ namespace MediaPlayerINF0996
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += Timer_Tick;
+            timer.Tick += (sender, e) =>
+            {
+                slider.Value = mediaPlayer.Position.TotalSeconds;
+            };
             
             DataContext = new MediaList();
 
@@ -57,6 +60,11 @@ namespace MediaPlayerINF0996
                 mediaPlayer.Source = m.Value.MediaPath;
             });
 
+            WeakReferenceMessenger.Default.Register<MediaList.UpdateRequestedMessage>(this,(r, m) =>
+            {
+                mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
+            });
+            
             mediaPlayer.MediaOpened += (sender, e) =>
             {
                 slider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
@@ -69,11 +77,6 @@ namespace MediaPlayerINF0996
             {
                 mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
             };
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            slider.Value = mediaPlayer.Position.TotalSeconds;
         }
 
     }

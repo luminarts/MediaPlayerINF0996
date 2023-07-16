@@ -29,7 +29,7 @@
             </StackPanel>
             <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
                 LoadedBehavior="Manual" UnloadedBehavior="Stop" Margin="20,20,20,20" Width="1300" Height="500" />
-                <Slider x:Name="slider" Margin="10,10,10,10" Width="900" Value="{Binding mediaPlayer.Position, Mode=TwoWay}" Maximum="1" />
+                <Slider x:Name="slider" Margin="10,10,10,10" Width="900"  Value="0" Maximum="1" />
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
                 VerticalAlignment="Center">

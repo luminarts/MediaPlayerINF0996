@@ -145,20 +145,5 @@ namespace MediaPlayerINF0996.ViewModel
             public SetNewMediaMessage(Media media) : base(media) {}        
         }
 
-
-        /*private void Video2(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");
-            MediaPlayerINF0996.MainWindow.titulo.Text = "Sinos";
-            mediaPlayer.Play();
-        }
-
-        private void Video3(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\videoplayback.mp4");
-            titulo.Text = "CG5 - Hi";
-            mediaPlayer.Play();
-        }*/
-
     }
 }

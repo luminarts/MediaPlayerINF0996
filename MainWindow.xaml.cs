@@ -32,7 +32,6 @@ namespace MediaPlayerINF0996
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
-            // timer.Start();
             
             DataContext = new MediaList();
 
@@ -57,27 +56,26 @@ namespace MediaPlayerINF0996
                 titulo.Text = m.Value.Name;
                 mediaPlayer.Source = m.Value.MediaPath;
             });
-        }
 
-        private void mediaPlayer_MediaOpened(object sender, RoutedEventArgs e)
-        {
-            progressBar.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
-        }
-
-        private void mediaPlayer_MediaEnded(object sender, RoutedEventArgs e)
-        {
-            progressBar.Value = 0;
+            mediaPlayer.MediaOpened += (sender, e) =>
+            {
+                slider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            };
+            mediaPlayer.MediaEnded += (sender, e) =>
+            {
+                slider.Value = 0;
+            };
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            var newPosition = TimeSpan.FromSeconds(progressBar.Value);
+            var newPosition = TimeSpan.FromSeconds(slider.Value);
             mediaPlayer.Position = newPosition;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            progressBar.Value = mediaPlayer.Position.TotalSeconds;
+            slider.Value = mediaPlayer.Position.TotalSeconds;
         }
 
     }

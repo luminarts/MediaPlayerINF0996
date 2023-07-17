@@ -26,6 +26,7 @@ namespace MediaPlayerINF0996.ViewModel
                 Pause.NotifyCanExecuteChanged();
                 Previous.NotifyCanExecuteChanged();
                 Next.NotifyCanExecuteChanged();
+                Mute.NotifyCanExecuteChanged();
             }
         }
         public ObservableCollection<Media> Medias { get; set; }
@@ -34,6 +35,7 @@ namespace MediaPlayerINF0996.ViewModel
         public RelayCommand Stop {get; set;}
         public RelayCommand Previous {get; set;}
         public RelayCommand Next {get; set;}
+        public RelayCommand Mute {get; set;}
         public RelayCommand Video1 {get; set;}
         public RelayCommand Video2 {get; set;}
         public RelayCommand Video3 {get; set;}
@@ -46,6 +48,7 @@ namespace MediaPlayerINF0996.ViewModel
             Pause = new RelayCommand(PauseCommand, CanPauseCommand);
             Previous = new RelayCommand(PreviousCommand, CanPreviousCommand);
             Next = new RelayCommand(NextCommand, CanNextCommand);
+            Mute = new RelayCommand(MuteCommand, CanMuteCommand);
             Video1 = new RelayCommand(Video1Command);
             Video2 = new RelayCommand(Video2Command);
             Video3 = new RelayCommand(Video3Command);
@@ -144,6 +147,16 @@ namespace MediaPlayerINF0996.ViewModel
         {
             return SelectedMedia != null;
         }
+
+        public void MuteCommand()
+        {
+           WeakReferenceMessenger.Default.Send(new MuteRequestedMessage()); 
+        }
+
+        public bool CanMuteCommand()
+        {
+            return SelectedMedia != null;
+        }
         private void Video1Command()
         {
             SelectedMedia = Medias[0];
@@ -185,5 +198,9 @@ namespace MediaPlayerINF0996.ViewModel
             public SetNewMediaMessage(Media media) : base(media) {}        
         }
 
+        public class MuteRequestedMessage
+        {
+            // Pode adicionar propriedades adicionais, se necessário
+        }
     }
 }

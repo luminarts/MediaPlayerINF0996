@@ -35,7 +35,20 @@ namespace MediaPlayerINF0996
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += (sender, e) =>
             {
-                slider.Value = mediaPlayer.Position.TotalSeconds;
+                slider_seek.Value = mediaPlayer.Position.TotalSeconds;
+            };
+
+            mediaPlayer.MediaOpened += (sender, e) =>
+            {
+                slider_seek.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
+            };
+            mediaPlayer.MediaEnded += (sender, e) =>
+            {
+                slider_seek.Value = 0;
+            };
+            slider_seek.ValueChanged += (sender, e) =>
+            {
+                mediaPlayer.Position = TimeSpan.FromSeconds(slider_seek.Value);
             };
 
             // Define o contexto de dados para a janela principal
@@ -68,18 +81,19 @@ namespace MediaPlayerINF0996
                 mediaPlayer.Source = m.Value.MediaPath;
             });
 
-            mediaPlayer.MediaOpened += (sender, e) =>
+            WeakReferenceMessenger.Default.Register<MediaList.MuteRequestedMessage>(this, (r, m) =>
             {
-                slider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
-            };
-            mediaPlayer.MediaEnded += (sender, e) =>
-            {
-                slider.Value = 0;
-            };
-            slider.ValueChanged += (sender, e) =>
-            {
-                mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
-            };
+                // Muta ou desmuta o media player
+                if(mediaPlayer.Volume > 0)
+                    mediaPlayer.Volume = 0;
+                else
+                    mediaPlayer.Volume = slider_vol.Value;
+            });
+        }
+        // Atualiza o volume do media element
+        private void Slider_vol_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            mediaPlayer.Volume = slider_vol.Value;
         }
     }
 }

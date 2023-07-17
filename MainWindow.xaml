@@ -47,7 +47,7 @@ Ele contém os elementos de interface do usuário e lida com eventos e lógica d
             <!-- Elemento de reprodução de mídia -->
             <MediaElement MaxWidth="800" x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
                 LoadedBehavior="Manual" UnloadedBehavior="Stop"  Margin="20,20,20,20" />
-            <Slider x:Name="slider" Margin="10,10,10,10" Width="900"  Value="0" Maximum="1" />
+            <Slider x:Name="slider_seek" Margin="10,10,10,10" Width="900"  Value="0" Maximum="1" />
         </StackPanel>
         
         <!-- Elementos da seção inferior -->
@@ -111,16 +111,22 @@ Ele contém os elementos de interface do usuário e lida com eventos e lógica d
                     <Polygon Margin="2,0,0,0" Points="0,0 12,7.5 12,0 13.5,0 13.5,15 12,15 12,7.5 0,15"  Fill="White" />
 
                 </Button>
-                <Button x:Name="VolumeButton" Margin="12,0,0,0" Background="Transparent" Foreground="Transparent" BorderBrush="Transparent" Height="14" Width="17" VerticalAlignment="Center" >
+                <Button x:Name="VolumeButton" Margin="12,0,0,0" Background="Transparent" Foreground="Transparent" 
+                        BorderBrush="Transparent" Height="14" Width="17" VerticalAlignment="Center" 
+                        CommandParameter="{Binding}" Command="{Binding Mute}">
                     <Grid>
                         <Polygon VerticalAlignment="Center" Points="0,0 -8,5 0,10" Fill="White" />
-                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" Fill="Transparent" Data="M5,0 A5,5,0,0,1,5,5"/>
-                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" Fill="Transparent" Data="M7.5,0 A7.5,7.5,0,0,1,7.5,7.5"/>
-                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" Fill="Transparent" Data="M10,0 A10,10,0,0,1,10,10"/>
+                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" 
+                                Fill="Transparent" Data="M5,0 A5,5,0,0,1,5,5"/>
+                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" 
+                                Fill="Transparent" Data="M7.5,0 A7.5,7.5,0,0,1,7.5,7.5"/>
+                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" 
+                                Fill="Transparent" Data="M10,0 A10,10,0,0,1,10,10"/>
                     </Grid>
                 </Button>
-                <Slider x:Name="Volume" Width="200" Height="18"
-                    Maximum="100" Minimum="0" Orientation="Horizontal"  Style="{DynamicResource VolumeSlider}"/>
+                <Slider x:Name="slider_vol" Width="200" Height="18"
+                    Maximum="1" Minimum="0" Orientation="Horizontal"  Style="{DynamicResource VolumeSlider}"
+                    LargeChange="0.1" SmallChange="0.01" Value="0.5" ValueChanged="Slider_vol_ValueChanged"/>
             </StackPanel>
         </StackPanel>
         

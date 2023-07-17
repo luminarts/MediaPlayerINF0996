@@ -35,7 +35,7 @@ namespace MediaPlayerINF0996
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += (sender, e) =>
             {
-                //slider.Value = mediaPlayer.Position.TotalSeconds;
+                slider.Value = mediaPlayer.Position.TotalSeconds;
             };
 
             // Define o contexto de dados para a janela principal
@@ -70,7 +70,7 @@ namespace MediaPlayerINF0996
                 mediaPlayer.Source = m.Value.MediaPath;
             });
 
-            /*mediaPlayer.MediaOpened += (sender, e) =>
+            mediaPlayer.MediaOpened += (sender, e) =>
             {
                 slider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
             };
@@ -81,7 +81,7 @@ namespace MediaPlayerINF0996
             slider.ValueChanged += (sender, e) =>
             {
                 mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
-            };*/
+            };
         }
     }
 }

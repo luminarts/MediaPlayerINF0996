@@ -19,12 +19,14 @@ Aqui estão alguns trechos de código que demonstram como usar determinadas func
 
 ## Descrição das classes principais
 - Classe MainWindow (View):
+
 Esta classe define a janela principal do media player.
 Ela contém os elementos de interface do usuário e lida com eventos e lógica da interface.
 A estrutura da interface de usuário é definida no arquivo XAML associado.
 <br>
 
 - Classe MainWindow.xaml.cs:
+
 Esta classe contém o código por trás da janela principal do media player.
 Ela controla a lógica do aplicativo e interage com os elementos da interface do usuário.
 No construtor da classe, são configurados os eventos para atualizar a interface do usuário e registrar os eventos para controlar a reprodução de mídia.
@@ -32,6 +34,7 @@ O método Slider_vol_ValueChanged é chamado quando o valor do slider de volume 
 <br>
 
 - Classe MediaList (ViewModel):
+
 Esta classe é responsável por gerenciar os dados e a lógica da interface do usuário relacionada à lista de mídias.
 Ela herda da classe ObservableObject, que permite a notificação de alterações de propriedades.
 Possui propriedades como SelectedMedia (representa a mídia atualmente selecionada) e Medias (uma coleção observável de objetos Media).
@@ -40,6 +43,7 @@ No construtor da classe, a coleção de mídias é inicializada, o método Prepa
 <br>
 
 - Classe Media (Model):
+
 Esta classe representa uma mídia.
 Ela herda da classe ObservableObject, permitindo a notificação de alterações de propriedades.
 Possui propriedades como Name (nome da mídia), Author (autor da mídia), Icon (ícone associado à mídia) e MediaPath (caminho da mídia).

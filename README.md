@@ -56,8 +56,8 @@ Essas classes são responsáveis por definir a lógica e a estrutura do media pl
 ## Funcionamento do sistema
 - foto do app
 <br>
-No aplicativo Songfy é possível assistir vídeos a partir de uma lista de mídias pré-selecionada.
-O usuário é capaz de pausar, parar e retormar um vídeo, bem como controlar o volume do som. Ademais, pode-se selecionar um ponto especifico do vídeo para asisitir a partir da barra de reprodução logo abaixo do vídeo.
+No aplicativo Songfy é possível assistir vídeos a partir de uma lista de mídias pré-selecionadas.
+O usuário é capaz de pausar, parar e retormar um vídeo, bem como controlar ou mutar o volume do som. Ademais, pode-se selecionar um ponto especifico do vídeo para asisitir a partir da barra de reprodução logo abaixo do vídeo.
 
 
 

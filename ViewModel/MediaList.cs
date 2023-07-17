@@ -4,10 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
-using System.Globalization;
 using System.IO;
-using System.Windows.Markup.Primitives;
-using System.Windows.Controls;
 using System;
 
 namespace MediaPlayerINF0996.ViewModel
@@ -36,9 +33,6 @@ namespace MediaPlayerINF0996.ViewModel
         public RelayCommand Previous {get; set;}
         public RelayCommand Next {get; set;}
         public RelayCommand Mute {get; set;}
-        public RelayCommand Video1 {get; set;}
-        public RelayCommand Video2 {get; set;}
-        public RelayCommand Video3 {get; set;}
         public MediaList()
         {
             Medias = new ObservableCollection<Media>();
@@ -49,9 +43,6 @@ namespace MediaPlayerINF0996.ViewModel
             Previous = new RelayCommand(PreviousCommand, CanPreviousCommand);
             Next = new RelayCommand(NextCommand, CanNextCommand);
             Mute = new RelayCommand(MuteCommand, CanMuteCommand);
-            Video1 = new RelayCommand(Video1Command);
-            Video2 = new RelayCommand(Video2Command);
-            Video3 = new RelayCommand(Video3Command);
             IsPlaying = false;
         }
 
@@ -157,50 +148,18 @@ namespace MediaPlayerINF0996.ViewModel
         {
             return SelectedMedia != null;
         }
-        private void Video1Command()
-        {
-            SelectedMedia = Medias[0];
-            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
-            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
-        }
 
-        private void Video2Command()
-        {
-            SelectedMedia = Medias[1];
-            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
-            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
-        }
+        public class PlayRequestedMessage{}
 
-        private void Video3Command()
-        {
-            SelectedMedia = Medias[2];
-            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
-            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
-        }
+        public class StopRequestedMessage{}
 
-        public class PlayRequestedMessage
-        {
-            // Pode adicionar propriedades adicionais, se necessário
-        }
-
-        public class StopRequestedMessage
-        {
-            // Pode adicionar propriedades adicionais, se necessário
-        }
-
-        public class PauseRequestedMessage
-        {
-            // Pode adicionar propriedades adicionais, se necessário
-        }
+        public class PauseRequestedMessage {}
 
         public class SetNewMediaMessage : ValueChangedMessage<Media>
         {
             public SetNewMediaMessage(Media media) : base(media) {}        
         }
 
-        public class MuteRequestedMessage
-        {
-            // Pode adicionar propriedades adicionais, se necessário
-        }
+        public class MuteRequestedMessage{}
     }
 }

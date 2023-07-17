@@ -48,6 +48,8 @@ namespace MediaPlayerINF0996
             WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this, (r, m) =>
             {
                 titulo.Text = m.Value.Name;
+                titulo2.Text = m.Value.Name;
+                autor2.Text = m.Value.Author;
                 mediaPlayer.Source = m.Value.MediaPath;
             });
         }

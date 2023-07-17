@@ -27,7 +27,6 @@
             <!-- <TextBlock Foreground="White" FontSize="25" Text="IMAGEM"/> -->
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" Text="Selecione um video" x:Name="titulo" Margin="10,10,10,10"/>
-            
             </StackPanel>
             
             <MediaElement MaxWidth="800" x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
@@ -39,8 +38,8 @@
             <Image Margin="40,5,20,5" Height="50" Width="50"
             Source="assets\img\icon.png"/>
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
-                <TextBlock Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
-                <TextBlock Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
+                <TextBlock Foreground="White" FontSize="15" x:Name="titulo2" Margin="0,0,40,0"/>
+                <TextBlock Foreground="White" FontSize="15" x:Name="autor2" Margin="0,0,40,0"/>
             </StackPanel>
         <Button Content="Play" CommandParameter="{Binding}" Command="{Binding Play}" 
                 Width="50" Height="25" RenderTransformOrigin="0.454,1.689" Margin="5,0,0,0" />

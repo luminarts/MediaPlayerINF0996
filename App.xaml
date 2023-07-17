@@ -4,6 +4,195 @@
              xmlns:local="clr-namespace:MediaPlayerINF0996"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <Style x:Key="RoundButton" TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="11"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="CircularButton">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="20"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="VolumeSlider" TargetType="Slider">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Slider}">
+                        <Grid>
+                            <Rectangle Margin="5,0,0,0" x:Name="LeftPortion" Fill="#1c1c1c" Stroke="#414242" 
+                                       Height="7" />
+                            <Rectangle Margin="5,0,0,0" x:Name="RightPortion" Fill="#1c1c1c" Stroke="#414242" 
+                                       Height="7" />
+                            <ProgressBar x:Name="PART_Slider"
+                                         Value="{TemplateBinding Value}"
+                                         Minimum="{TemplateBinding Minimum}"
+                                         Maximum="{TemplateBinding Maximum}"
+                                         Background="#1c1c1c"
+                                         BorderThickness="1.5"
+                                         BorderBrush="#414242"
+                                         Height="10"/>
+
+
+                            <Track x:Name="PART_Track">
+                                <Track.Thumb>
+                                    <Thumb x:Name="VolumeSelector" Width="18" Height="18" >
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="{x:Type Thumb}">
+
+                                                <Ellipse Name="VolumeThumb" Fill="#252626" Stroke="#414242" />
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="VolumeThumb" Property="Fill" Value="#60deb3" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Value" Value="0">
+                                <Setter TargetName="LeftPortion" Property="Fill" Value="#60deb3" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#60deb3"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#60deb3"/>
+        <ControlTemplate x:Key="MouseOverTemplate" TargetType="{x:Type ButtonBase}">
+            <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style x:Key="PlayPauseButton" TargetType="ToggleButton">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="50"/>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Content">
+                <Setter.Value>
+                    <Polygon Margin="5,0,0,0" Points="0,0 16,10 0,20"  Fill="White"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Command" Value="{Binding Pause}" />
+            <Setter Property="CommandParameter" Value="{Binding}" />
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Content">
+                        <Setter.Value>
+                            <Grid>
+                                <Polygon Margin="0,0,0,0" Points="0,0 0,20 4,20 4,0"  Fill="White"/>
+                                <Polygon Margin="0,0,0,0" Points="6,0 6,20 10,20 10,0"  Fill="White"/>
+                            </Grid>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Command" Value="{Binding Play}" />
+                    <Setter Property="CommandParameter" Value="{Binding}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MusicList" TargetType="{x:Type DataGrid}" >
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="10"/>
+            <Setter Property="HeadersVisibility" Value="Column" />
+            <Setter Property="GridLinesVisibility" Value="None" />
+            <Setter Property="Margin" Value="10,0,10,0" />
+            <Setter Property="RowStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Margin" Value="0,0,0,10" />
+                        <Setter Property="Background" Value="#1F1F1F" />
+
+
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGrid}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="1">
+                            <ScrollViewer x:Name="MusicScrollViewer" Focusable="false">
+                                <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CellStyle">
+                <Setter.Value>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,0,1,1">
+                                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#7e7f7f" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="BorderBrush" Value="#60deb3" />
+                             
+                          
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#262525" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0,1,1,1">
+                                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#414242" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>

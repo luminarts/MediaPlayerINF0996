@@ -24,12 +24,16 @@ namespace MediaPlayerINF0996.ViewModel
                 Play.NotifyCanExecuteChanged();
                 Stop.NotifyCanExecuteChanged();
                 Pause.NotifyCanExecuteChanged();
+                Previous.NotifyCanExecuteChanged();
+                Next.NotifyCanExecuteChanged();
             }
         }
         public ObservableCollection<Media> Medias { get; set; }
         public RelayCommand Play { get; set; }
         public RelayCommand Pause {get; set;}
         public RelayCommand Stop {get; set;}
+        public RelayCommand Previous {get; set;}
+        public RelayCommand Next {get; set;}
         public RelayCommand Video1 {get; set;}
         public RelayCommand Video2 {get; set;}
         public RelayCommand Video3 {get; set;}
@@ -40,9 +44,12 @@ namespace MediaPlayerINF0996.ViewModel
             Play = new RelayCommand(PlayCommand, CanPlayCommand);
             Stop = new RelayCommand(StopCommand, CanStopCommand);
             Pause = new RelayCommand(PauseCommand, CanPauseCommand);
+            Previous = new RelayCommand(PreviousCommand, CanPreviousCommand);
+            Next = new RelayCommand(NextCommand, CanNextCommand);
             Video1 = new RelayCommand(Video1Command);
             Video2 = new RelayCommand(Video2Command);
             Video3 = new RelayCommand(Video3Command);
+            IsPlaying = false;
         }
 
         private void PrepareListCollection()
@@ -73,10 +80,18 @@ namespace MediaPlayerINF0996.ViewModel
             Medias.Add(media3);
         }
 
+        private bool isPlaying;
+        public bool IsPlaying
+        {
+            get { return isPlaying; }
+            set { SetProperty(ref isPlaying, value); }
+        }
+
         private void PlayCommand()
         {
             WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
             WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
+            IsPlaying = true;
         }
 
         public bool CanPlayCommand()
@@ -87,6 +102,7 @@ namespace MediaPlayerINF0996.ViewModel
         private void StopCommand()
         {
             WeakReferenceMessenger.Default.Send(new StopRequestedMessage());
+            IsPlaying = false;
         }
 
         public bool CanStopCommand()
@@ -97,6 +113,7 @@ namespace MediaPlayerINF0996.ViewModel
         private void PauseCommand()
         {
             WeakReferenceMessenger.Default.Send(new PauseRequestedMessage());
+            IsPlaying = false;
         }
 
         public bool CanPauseCommand()
@@ -104,6 +121,29 @@ namespace MediaPlayerINF0996.ViewModel
             return SelectedMedia != null;
         }
 
+        public void PreviousCommand()
+        {
+            StopCommand();
+            SelectedMedia = Medias[Medias.IndexOf(SelectedMedia) == 0 ? Medias.Count-1 : Medias.IndexOf(SelectedMedia)-1];
+            PlayCommand();
+        }
+
+        public bool CanPreviousCommand()
+        {
+            return SelectedMedia != null;
+        }
+
+        public void NextCommand()
+        {
+            StopCommand();
+            SelectedMedia = Medias[Medias.IndexOf(SelectedMedia) == Medias.Count-1 ? 0 : Medias.IndexOf(SelectedMedia)+1];
+            PlayCommand();
+        }
+
+        public bool CanNextCommand()
+        {
+            return SelectedMedia != null;
+        }
         private void Video1Command()
         {
             SelectedMedia = Medias[0];

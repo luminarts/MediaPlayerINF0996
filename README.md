@@ -25,6 +25,7 @@ Ela contém os elementos de interface do usuário e lida com eventos e lógica d
 A estrutura da interface de usuário é definida no arquivo XAML associado.
 <br>
 
+
 - Classe MainWindow.xaml.cs:
 
 Esta classe contém o código por trás da janela principal do media player.
@@ -32,6 +33,7 @@ Ela controla a lógica do aplicativo e interage com os elementos da interface do
 No construtor da classe, são configurados os eventos para atualizar a interface do usuário e registrar os eventos para controlar a reprodução de mídia.
 O método Slider_vol_ValueChanged é chamado quando o valor do slider de volume é alterado, atualizando o volume do elemento de mídia.
 <br>
+
 
 - Classe MediaList (ViewModel):
 
@@ -41,6 +43,7 @@ Possui propriedades como SelectedMedia (representa a mídia atualmente seleciona
 Também possui comandos como Play, Pause, Stop, Previous, Next e Mute, implementados usando a classe RelayCommand do Community Toolkit MVVM.
 No construtor da classe, a coleção de mídias é inicializada, o método PrepareListCollection é chamado para adicionar mídias à coleção e os comandos são inicializados com seus respectivos métodos de execução e verificação de execução.
 <br>
+
 
 - Classe Media (Model):
 

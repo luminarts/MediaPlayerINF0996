@@ -92,7 +92,8 @@ Ele contém os elementos de interface do usuário e lida com eventos e lógica d
                 </Button>
                 <ToggleButton Margin="10,0,0,0" Template="{StaticResource MouseOverTemplate}" Height="50"
                               Width="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                              Background="Transparent" Style="{DynamicResource PlayPauseButton}" IsChecked="{Binding IsPlaying, Mode=TwoWay}">
+                              Background="Transparent" Style="{DynamicResource PlayPauseButton}" >
+                    
                     
 
                 </ToggleButton>
@@ -131,10 +132,10 @@ Ele contém os elementos de interface do usuário e lida com eventos e lógica d
                 Name="Playlist"
                 Text="LANÇAMENTOS" HorizontalAlignment="Center" Margin="0,0,0,10"/>
             <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                    VerticalScrollBarVisibility="Auto" Background="#262525" Foreground="#262525">
+                    VerticalScrollBarVisibility="Auto" Background="Transparent" Foreground="#262525">
                 <Grid x:Name="grid" MinWidth="200" 
                     Width="{Binding Path=ActualWidth, 
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollContentPresenter}}}" Background="#262525">
+                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollContentPresenter}}}" Background="Transparent">
                     <DataGrid ItemsSource="{Binding Medias}"
                         AutoGenerateColumns="False"
                         IsReadOnly="True"

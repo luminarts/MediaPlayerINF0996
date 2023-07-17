@@ -29,40 +29,48 @@ namespace MediaPlayerINF0996
         public MainWindow()
         {
             InitializeComponent();
+
+            // Configura o timer para atualizar a interface do usuário
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += (sender, e) =>
             {
-                slider.Value = mediaPlayer.Position.TotalSeconds;
+                //slider.Value = mediaPlayer.Position.TotalSeconds;
             };
-            
+
+            // Define o contexto de dados para a janela principal
             DataContext = new MediaList();
 
+            // Registra os eventos para controlar a reprodução de mídia
             WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this, (r, m) =>
             {
+                // Inicia a reprodução da mídia
                 timer.Start();
                 mediaPlayer.Play();
             });
 
             WeakReferenceMessenger.Default.Register<MediaList.StopRequestedMessage>(this, (r, m) =>
             {
+                // Para a reprodução da mídia
                 mediaPlayer.Stop();
             });
 
             WeakReferenceMessenger.Default.Register<MediaList.PauseRequestedMessage>(this, (r, m) =>
             {
+                // Pausa a reprodução da mídia
                 mediaPlayer.Pause();
             });
 
             WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this, (r, m) =>
             {
+                // Atualiza a mídia atual
                 titulo.Text = m.Value.Name;
                 titulo2.Text = m.Value.Name;
                 autor2.Text = m.Value.Author;
                 mediaPlayer.Source = m.Value.MediaPath;
             });
-            
-            mediaPlayer.MediaOpened += (sender, e) =>
+
+            /*mediaPlayer.MediaOpened += (sender, e) =>
             {
                 slider.Maximum = mediaPlayer.NaturalDuration.TimeSpan.TotalSeconds;
             };
@@ -73,7 +81,7 @@ namespace MediaPlayerINF0996
             slider.ValueChanged += (sender, e) =>
             {
                 mediaPlayer.Position = TimeSpan.FromSeconds(slider.Value);
-            };
+            };*/
         }
     }
 }

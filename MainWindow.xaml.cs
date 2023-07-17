@@ -25,7 +25,7 @@ namespace MediaPlayerINF0996
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {      
+    {
         public MainWindow()
         {
             InitializeComponent();
@@ -38,25 +38,27 @@ namespace MediaPlayerINF0996
             
             DataContext = new MediaList();
 
-            WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this,(r, m) =>
+            WeakReferenceMessenger.Default.Register<MediaList.PlayRequestedMessage>(this, (r, m) =>
             {
                 timer.Start();
                 mediaPlayer.Play();
             });
 
-            WeakReferenceMessenger.Default.Register<MediaList.StopRequestedMessage>(this,(r, m) =>
+            WeakReferenceMessenger.Default.Register<MediaList.StopRequestedMessage>(this, (r, m) =>
             {
                 mediaPlayer.Stop();
             });
 
-            WeakReferenceMessenger.Default.Register<MediaList.PauseRequestedMessage>(this,(r, m) =>
+            WeakReferenceMessenger.Default.Register<MediaList.PauseRequestedMessage>(this, (r, m) =>
             {
                 mediaPlayer.Pause();
             });
 
-            WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this,(r, m) =>
+            WeakReferenceMessenger.Default.Register<MediaList.SetNewMediaMessage>(this, (r, m) =>
             {
                 titulo.Text = m.Value.Name;
+                titulo2.Text = m.Value.Name;
+                autor2.Text = m.Value.Author;
                 mediaPlayer.Source = m.Value.MediaPath;
             });
             

@@ -27,24 +27,25 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" Text="Selecione um video" x:Name="titulo" Margin="10,10,10,10"/>
             </StackPanel>
-            <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
-                LoadedBehavior="Manual" UnloadedBehavior="Stop" Margin="20,20,20,20" Width="1300" Height="500" />
-                <Slider x:Name="slider" Margin="10,10,10,10" Width="900"  Value="0" Maximum="1" />
+            <MediaElement MaxWidth="800" x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
+                LoadedBehavior="Manual" UnloadedBehavior="Stop"  Margin="20,20,20,20" />
+            <Slider Height="25" x:Name="slider_seek" Width="800" Margin="5,0,20,0"/>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
                 VerticalAlignment="Center">
             <Image Margin="40,5,20,5" Height="50" Width="50"
             Source="https://github.com/luminarts/MediaPlayerINF0996/blob/main/assets/img/icon.png?raw=true"/>
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
-                <TextBlock Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
-                <TextBlock Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
+                <TextBlock Foreground="White" FontSize="15" x:Name="titulo2" Margin="0,0,40,0"/>
+                <TextBlock Foreground="White" FontSize="15" x:Name="autor2" Margin="0,0,40,0"/>
             </StackPanel>
         <Button Content="Play" CommandParameter="{Binding}" Command="{Binding Play}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
+                Width="50" Height="25" RenderTransformOrigin="0.454,1.689" Margin="5,0,0,0" />
         <Button Content="Stop" CommandParameter="{Binding}" Command="{Binding Stop}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
+                Width="50" Height="25" Margin="5,0,0,0" />
         <Button Content="Pause" CommandParameter="{Binding}" Command="{Binding Pause}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
+                Width="50" Height="25" Margin="5,0,0,0"/>
+
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">

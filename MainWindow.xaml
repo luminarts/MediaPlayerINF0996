@@ -15,10 +15,10 @@
             <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-    
-        <Border Background="#252626"/>
-        <Border Grid.Column="1" Background="#1F1F1F"/>
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#1F1F1F"/>
+
+        <Border Background="#252626" BorderThickness="1" BorderBrush="#7e7f7f"/>
+        <Border Grid.Column="1" Background="#1F1F1F" BorderThickness="1" BorderBrush="#7e7f7f" />
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#1F1F1F" BorderThickness="1" BorderBrush="#7e7f7f"/>
     
         <!--StackPanel Acima Direita-->
         <StackPanel Grid.Column="1" Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center" >
@@ -57,7 +57,8 @@
                 </Button>
                 <ToggleButton Margin="10,0,0,0" Template="{StaticResource MouseOverTemplate}" Height="50"
                               Width="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
-                              Background="Transparent" Style="{DynamicResource PlayPauseButton}" IsChecked="{Binding IsPlaying, Mode=TwoWay}">
+                              Background="Transparent" Style="{DynamicResource PlayPauseButton}" >
+                    
                     
 
                 </ToggleButton>
@@ -94,10 +95,10 @@
                 Name="Playlist"
                 Text="LANÇAMENTOS" HorizontalAlignment="Center" Margin="0,0,0,10"/>
             <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                    VerticalScrollBarVisibility="Auto" Background="#262525" Foreground="#262525">
+                    VerticalScrollBarVisibility="Auto" Background="Transparent" Foreground="#262525">
                 <Grid x:Name="grid" MinWidth="200" 
                     Width="{Binding Path=ActualWidth, 
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollContentPresenter}}}" Background="#262525">
+                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollContentPresenter}}}" Background="Transparent">
                     <DataGrid ItemsSource="{Binding Medias}"
                         AutoGenerateColumns="False"
                         IsReadOnly="True"

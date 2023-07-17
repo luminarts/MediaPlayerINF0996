@@ -97,6 +97,8 @@
                     <Polygon Margin="5,0,0,0" Points="0,0 16,10 0,20"  Fill="White"/>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Command" Value="{Binding Pause}" />
+            <Setter Property="CommandParameter" Value="{Binding}" />
             <Style.Triggers>
                 <Trigger Property="IsChecked" Value="True">
                     <Setter Property="Content">
@@ -107,17 +109,19 @@
                             </Grid>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="Command" Value="{Binding Play}" />
+                    <Setter Property="CommandParameter" Value="{Binding}" />
                 </Trigger>
             </Style.Triggers>
         </Style>
 
         <Style x:Key="MusicList" TargetType="{x:Type DataGrid}" >
-            <Setter Property="Background" Value="#262525"/>
+            <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="10"/>
             <Setter Property="HeadersVisibility" Value="Column" />
             <Setter Property="GridLinesVisibility" Value="None" />
-
+            <Setter Property="Margin" Value="10,0,10,0" />
             <Setter Property="RowStyle">
                 <Setter.Value>
                     <Style TargetType="DataGridRow">

@@ -43,6 +43,7 @@ namespace MediaPlayerINF0996.ViewModel
             Video1 = new RelayCommand(Video1Command);
             Video2 = new RelayCommand(Video2Command);
             Video3 = new RelayCommand(Video3Command);
+            IsPlaying = false;
         }
 
         private void PrepareListCollection()
@@ -84,7 +85,7 @@ namespace MediaPlayerINF0996.ViewModel
         {
             WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
             WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
-            isPlaying = true;
+            IsPlaying = true;
         }
 
         public bool CanPlayCommand()
@@ -105,7 +106,7 @@ namespace MediaPlayerINF0996.ViewModel
         private void PauseCommand()
         {
             WeakReferenceMessenger.Default.Send(new PauseRequestedMessage());
-            isPlaying = false;
+            IsPlaying = false;
         }
 
         public bool CanPauseCommand()

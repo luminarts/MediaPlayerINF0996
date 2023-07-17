@@ -11,12 +11,14 @@ namespace MediaPlayerINF0996.ViewModel
 {
     public class MediaList : ObservableObject
     {
+        // atributo e propriedade da midia que está selecionada para executar no app
         private Media selectedMedia;
         public Media SelectedMedia
         {
             get {return selectedMedia;}
             set
-            {
+            {   
+                // notifica os botoes que dependem de uma midia selecionada para funcionar
                 SetProperty(ref selectedMedia, value);
                 Play.NotifyCanExecuteChanged();
                 Stop.NotifyCanExecuteChanged();
@@ -26,7 +28,9 @@ namespace MediaPlayerINF0996.ViewModel
                 Mute.NotifyCanExecuteChanged();
             }
         }
+        //lista de midias disponiveis
         public ObservableCollection<Media> Medias { get; set; }
+        // comandos criados para executar nos botoes
         public RelayCommand Play { get; set; }
         public RelayCommand Pause {get; set;}
         public RelayCommand Stop {get; set;}
@@ -35,6 +39,7 @@ namespace MediaPlayerINF0996.ViewModel
         public RelayCommand Mute {get; set;}
         public MediaList()
         {
+            // cria uma lista com todas as midias disponiveis no app e cria o eventos de botoes
             Medias = new ObservableCollection<Media>();
             PrepareListCollection();
             Play = new RelayCommand(PlayCommand, CanPlayCommand);
@@ -45,7 +50,7 @@ namespace MediaPlayerINF0996.ViewModel
             Mute = new RelayCommand(MuteCommand, CanMuteCommand);
             IsPlaying = false;
         }
-
+        // prepara a lista de midias com os videos que adicionamos
         private void PrepareListCollection()
         {
             var media1 = new Media
@@ -74,25 +79,25 @@ namespace MediaPlayerINF0996.ViewModel
             Medias.Add(media3);
         }
 
+        // propriedade que identifica se tem uma midia tocando
         private bool isPlaying;
         public bool IsPlaying
         {
             get { return isPlaying; }
             set { SetProperty(ref isPlaying, value); }
         }
-
+        // comando de play na midia
         private void PlayCommand()
         {
             WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
             WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
             IsPlaying = true;
         }
-
         public bool CanPlayCommand()
         {
             return SelectedMedia != null;
         }
-
+        // comando de stop da midia
         private void StopCommand()
         {
             WeakReferenceMessenger.Default.Send(new StopRequestedMessage());
@@ -103,7 +108,7 @@ namespace MediaPlayerINF0996.ViewModel
         {
             return SelectedMedia != null;
         }
-
+        //comando de pause da midia
         private void PauseCommand()
         {
             WeakReferenceMessenger.Default.Send(new PauseRequestedMessage());
@@ -114,7 +119,7 @@ namespace MediaPlayerINF0996.ViewModel
         {
             return SelectedMedia != null;
         }
-
+        // comando de retornar para midia anterior
         public void PreviousCommand()
         {
             StopCommand();
@@ -126,7 +131,7 @@ namespace MediaPlayerINF0996.ViewModel
         {
             return SelectedMedia != null;
         }
-
+        // comando para ir para a proxima midia da lista
         public void NextCommand()
         {
             StopCommand();
@@ -138,7 +143,7 @@ namespace MediaPlayerINF0996.ViewModel
         {
             return SelectedMedia != null;
         }
-
+        // comando para mutar o volume
         public void MuteCommand()
         {
            WeakReferenceMessenger.Default.Send(new MuteRequestedMessage()); 
@@ -148,7 +153,7 @@ namespace MediaPlayerINF0996.ViewModel
         {
             return SelectedMedia != null;
         }
-
+        // conjunto de mensagens enviadas para o view, a fim de executar comandos ou trocas dados
         public class PlayRequestedMessage{}
 
         public class StopRequestedMessage{}

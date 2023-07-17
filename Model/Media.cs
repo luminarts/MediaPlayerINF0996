@@ -3,11 +3,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace MediaPlayerINF0996.Model
 {
+    // classe com as informacoes de uma midia: nome, autor e caminho do arquivo
     public class Media : ObservableObject
     {
         private string name;
         private string author;
-        private string icon;
         private Uri mediaPath;
 
         public string Name
@@ -20,12 +20,6 @@ namespace MediaPlayerINF0996.Model
         {
             get {return author;}
             set {SetProperty(ref author, value);}
-        }
-
-        public string Icon
-        {
-            get {return icon;}
-            set {SetProperty(ref icon, value);}
         }
 
         public Uri MediaPath

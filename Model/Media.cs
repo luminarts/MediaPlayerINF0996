@@ -8,7 +8,6 @@ namespace MediaPlayerINF0996.Model
     {
         private string name;
         private string author;
-        private string icon;
         private Uri mediaPath;
 
         //Propriedade Name, que representa o nome da mídia.
@@ -26,15 +25,7 @@ namespace MediaPlayerINF0996.Model
             get { return author; }
             set { SetProperty(ref author, value); }
         }
-
-        //Propriedade Icon, que representa o ícone associado à mídia. Também segue a mesma linha de raciocínio que 
-        //as propriedades anteriormente citadas.
-        public string Icon
-        {
-            get { return icon; }
-            set { SetProperty(ref icon, value); }
-        }
-
+        
         //propriedade MediaPath, que representa o caminho da mídia. É do tipo Uri, o que sugere que representa o 
         //local onde o arquivo de mídia está armazenado. O getter retorna o valor atual da propriedade e o setter 
         //utiliza o método SetProperty para notificar as alterações e atualizar o valor.

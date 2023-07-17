@@ -65,8 +65,6 @@ namespace MediaPlayerINF0996
             {
                 // Atualiza a mídia atual
                 titulo.Text = m.Value.Name;
-               // titulo2.Text = m.Value.Name;
-               // autor2.Text = m.Value.Author;
                 mediaPlayer.Source = m.Value.MediaPath;
             });
 

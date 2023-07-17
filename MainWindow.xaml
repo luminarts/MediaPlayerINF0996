@@ -45,9 +45,9 @@ Ele contém os elementos de interface do usuário e lida com eventos e lógica d
             </StackPanel>
 
             <!-- Elemento de reprodução de mídia -->
-            <MediaElement MaxWidth="800" x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
+            <MediaElement MaxWidth="700" x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
                 LoadedBehavior="Manual" UnloadedBehavior="Stop"  Margin="20,20,20,20" />
-            <Slider x:Name="slider_seek" Margin="10,10,10,10" Width="900"  Value="0" Maximum="1" />
+            <Slider x:Name="slider_seek" Margin="10,10,10,10" Width="700"  Value="0" Maximum="1" />
         </StackPanel>
 
         <!--StackPanel Abaixo Esquerda-->

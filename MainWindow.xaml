@@ -87,7 +87,7 @@ Ele contém os elementos de interface do usuário e lida com eventos e lógica d
         
            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                <Button Template="{DynamicResource MouseOverTemplate}" x:Name="PreviousButton" Width="40" Height="40" Foreground="Transparent" Background="Transparent" Command="{Binding}" CommandParameter="{Binding Play}" Style="{StaticResource CircularButton}" >
+                <Button Template="{DynamicResource MouseOverTemplate}" x:Name="PreviousButton" Width="40" Height="40" Foreground="Transparent" Background="Transparent" Command="{Binding Previous}" CommandParameter="{Binding Play}" Style="{StaticResource CircularButton}" >
                     <Polygon Margin="11.25,0,0,0" Points="0,0 -12,7.5 -12,0 -13.5,0 -13.5,15 -12,15 -12,7.5 0,15"  Fill="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Button>
                 <ToggleButton Margin="10,0,0,0" Template="{StaticResource MouseOverTemplate}" Height="50"
@@ -101,7 +101,8 @@ Ele contém os elementos de interface do usuário e lida com eventos e lógica d
                         CommandParameter="{Binding}" Command="{Binding Stop}" Style="{StaticResource CircularButton}" >
                     <Polygon Margin="0,0,0,0" Points="0,0 15,0 15,15 0,15"  Fill="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Button>
-                <Button x:Name="NextButton" Template="{DynamicResource MouseOverTemplate}" Margin="10,0,0,0"   Width="40" Height="40" Foreground="Transparent" Background="Transparent" Style="{StaticResource CircularButton}" >
+                <Button x:Name="NextButton" Template="{DynamicResource MouseOverTemplate}" Margin="10,0,0,0"   Width="40" Height="40" Foreground="Transparent" Background="Transparent" Style="{StaticResource CircularButton}"
+                        Command="{Binding Previous}" CommandParameter="{Binding Play}" >
                     <Polygon Margin="2,0,0,0" Points="0,0 12,7.5 12,0 13.5,0 13.5,15 12,15 12,7.5 0,15"  Fill="White" />
 
                 </Button>

@@ -30,6 +30,8 @@ namespace MediaPlayerINF0996.ViewModel
         public RelayCommand Play { get; set; }
         public RelayCommand Pause {get; set;}
         public RelayCommand Stop {get; set;}
+        public RelayCommand Previous {get; set;}
+        public RelayCommand Next {get; set;}
         public RelayCommand Video1 {get; set;}
         public RelayCommand Video2 {get; set;}
         public RelayCommand Video3 {get; set;}
@@ -40,6 +42,8 @@ namespace MediaPlayerINF0996.ViewModel
             Play = new RelayCommand(PlayCommand, CanPlayCommand);
             Stop = new RelayCommand(StopCommand, CanStopCommand);
             Pause = new RelayCommand(PauseCommand, CanPauseCommand);
+            Previous = new RelayCommand(PreviousCommand, CanPreviousCommand);
+            Next = new RelayCommand(NextCommand, CanNextCommand);
             Video1 = new RelayCommand(Video1Command);
             Video2 = new RelayCommand(Video2Command);
             Video3 = new RelayCommand(Video3Command);
@@ -113,6 +117,29 @@ namespace MediaPlayerINF0996.ViewModel
             return SelectedMedia != null;
         }
 
+        public void PreviousCommand()
+        {
+            StopCommand();
+            SelectedMedia = Medias[Medias.IndexOf(SelectedMedia) == 0 ? Medias.Count-1 : Medias.IndexOf(SelectedMedia)-1];
+            PlayCommand();
+        }
+
+        public bool CanPreviousCommand()
+        {
+            return SelectedMedia != null;
+        }
+
+        public void NextCommand()
+        {
+            StopCommand();
+            SelectedMedia = Medias[Medias.IndexOf(SelectedMedia) == Medias.Count-1 ? 0 : Medias.IndexOf(SelectedMedia)+1];
+            PlayCommand();
+        }
+
+        public bool CanNextCommand()
+        {
+            return SelectedMedia != null;
+        }
         private void Video1Command()
         {
             SelectedMedia = Medias[0];

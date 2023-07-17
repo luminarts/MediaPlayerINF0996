@@ -5,6 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
+        <!-- Define um estilo arredondado para os botões -->
         <Style x:Key="RoundButton" TargetType="Button">
             <Style.Resources>
                 <Style TargetType="Border">
@@ -13,6 +14,7 @@
             </Style.Resources>
         </Style>
 
+        <!-- Define um estilo para botões com formato circular -->
         <Style x:Key="CircularButton">
             <Style.Resources>
                 <Style TargetType="Border">
@@ -21,6 +23,7 @@
             </Style.Resources>
         </Style>
 
+        <!-- Define um estilo personalizado para o controle slider de volume -->
         <Style x:Key="VolumeSlider" TargetType="Slider">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="Background" Value="Transparent"/>
@@ -50,6 +53,7 @@
                                             <ControlTemplate TargetType="{x:Type Thumb}">
 
                                                 <Ellipse Name="VolumeThumb" Fill="#252626" Stroke="#414242" />
+                                                <!-- Define a mudança de cor do preenchimento do VolumeThumb quando o mouse está sobre ele -->
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="IsMouseOver" Value="True">
                                                         <Setter TargetName="VolumeThumb" Property="Fill" Value="#60deb3" />
@@ -71,14 +75,16 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        <!-- Define a cor de fundo e a cor da borda para o estado de "mouse sobre" de um botão -->
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#60deb3"/>
         <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#60deb3"/>
+        <!-- Define um template de controle para o estado de "mouse sobre" de um botão base -->
         <ControlTemplate x:Key="MouseOverTemplate" TargetType="{x:Type ButtonBase}">
             <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
             <ControlTemplate.Triggers>
+                <!-- Define a mudança de cor de fundo e cor da borda quando o mouse está sobre o botão -->
                 <Trigger Property="IsMouseOver" Value="true">
                     <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
                     <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
@@ -86,6 +92,7 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
+        <!-- Define um estilo personalizado para um ToggleButton -->
         <Style x:Key="PlayPauseButton" TargetType="ToggleButton">
             <Style.Resources>
                 <Style TargetType="Border">
@@ -94,15 +101,18 @@
             </Style.Resources>
             <Setter Property="Content">
                 <Setter.Value>
+                    <!-- Define o conteúdo do botão como um ícone de "play" -->
                     <Polygon Margin="5,0,0,0" Points="0,0 16,10 0,20"  Fill="White"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="Command" Value="{Binding Pause}" />
             <Setter Property="CommandParameter" Value="{Binding}" />
             <Style.Triggers>
+                <!-- Define a mudança de conteúdo do botão e do comando quando ele está no estado "marcado" -->
                 <Trigger Property="IsChecked" Value="True">
                     <Setter Property="Content">
                         <Setter.Value>
+                            <!-- Define o conteúdo do botão como um ícone de "pause" -->
                             <Grid>
                                 <Polygon Margin="0,0,0,0" Points="0,0 0,20 4,20 4,0"  Fill="White"/>
                                 <Polygon Margin="0,0,0,0" Points="6,0 6,20 10,20 10,0"  Fill="White"/>
@@ -115,6 +125,7 @@
             </Style.Triggers>
         </Style>
 
+        <!-- Define um estilo personalizado para a exibição de uma lista de músicas usando o controle DataGrid -->
         <Style x:Key="MusicList" TargetType="{x:Type DataGrid}" >
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -159,13 +170,14 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
+                            <!-- Define a mudança de cor de fundo quando o mouse está sobre a célula -->
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#7e7f7f" />
                             </Trigger>
+                            <!-- Define a mudança de cor da borda quando a célula está selecionada -->
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="BorderBrush" Value="#60deb3" />
-                             
-                          
+                                 
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -186,6 +198,7 @@
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
+                            <!-- Define a mudança de cor de fundo quando o mouse está sobre o cabeçalho da coluna -->
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#414242" />
                             </Trigger>

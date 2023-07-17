@@ -24,6 +24,8 @@ namespace MediaPlayerINF0996.ViewModel
                 Play.NotifyCanExecuteChanged();
                 Stop.NotifyCanExecuteChanged();
                 Pause.NotifyCanExecuteChanged();
+                Previous.NotifyCanExecuteChanged();
+                Next.NotifyCanExecuteChanged();
             }
         }
         public ObservableCollection<Media> Medias { get; set; }
@@ -100,6 +102,7 @@ namespace MediaPlayerINF0996.ViewModel
         private void StopCommand()
         {
             WeakReferenceMessenger.Default.Send(new StopRequestedMessage());
+            IsPlaying = false;
         }
 
         public bool CanStopCommand()

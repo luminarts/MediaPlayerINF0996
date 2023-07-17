@@ -73,10 +73,18 @@ namespace MediaPlayerINF0996.ViewModel
             Medias.Add(media3);
         }
 
+        private bool isPlaying;
+        public bool IsPlaying
+        {
+            get { return isPlaying; }
+            set { SetProperty(ref isPlaying, value); }
+        }
+
         private void PlayCommand()
         {
             WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
             WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
+            isPlaying = true;
         }
 
         public bool CanPlayCommand()
@@ -97,6 +105,7 @@ namespace MediaPlayerINF0996.ViewModel
         private void PauseCommand()
         {
             WeakReferenceMessenger.Default.Send(new PauseRequestedMessage());
+            isPlaying = false;
         }
 
         public bool CanPauseCommand()

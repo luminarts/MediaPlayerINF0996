@@ -54,7 +54,8 @@ Cada propriedade utiliza o método SetProperty para notificar as alterações e 
 Essas classes são responsáveis por definir a lógica e a estrutura do media player, incluindo a interface do usuário, a manipulação de eventos e a reprodução de mídia.
 
 ## Funcionamento do sistema
-- foto do app
+- <img width="960" alt="image" src="https://github.com/luminarts/MediaPlayerINF0996/assets/100354416/027931be-e56f-4e07-a151-5f4de6217267">
+
 <br>
 No aplicativo Songfy é possível assistir vídeos a partir de uma lista de mídias pré-selecionadas.
 O usuário é capaz de pausar, parar e retormar um vídeo, bem como controlar ou mutar o volume do som. Ademais, pode-se selecionar um ponto especifico do vídeo para asisitir a partir da barra de reprodução logo abaixo do vídeo.

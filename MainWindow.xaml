@@ -1,113 +1,176 @@
-﻿<Window x:Class="MediaPlayerINF0996.MainWindow"
+﻿<!-- Este é o arquivo XAML principal que define a janela principal do media player.
+Ele contém os elementos de interface do usuário e lida com eventos e lógica da interface. -->
+<Window x:Class="MediaPlayerINF0996.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MediaPlayerINF0996"
         mc:Ignorable="d"
-        Title="Songfy" Height="800" Width="1400">
-<Grid>
+        Title="Songfy" Height="800" Width="1400" WindowState="Maximized">
+
+    <!-- Aqui é definida a estrutura da interface de usuário -->
+    <Grid>
+        <!-- Define as colunas e linhas do grid do projeto (respectivamente) -->
         <Grid.ColumnDefinitions>
+            <!-- Definição das colunas -->
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <!-- Definição das linhas -->
             <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Border Background="#323232"/>
-        <Border Grid.Column="1" Background="#544C4A"/>
-        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#363636"/>
+        <!-- Elementos visuais da interface de usuário -->
+        <!-- Define o plano de fundo do aplicativo -->
+        <Border Background="#252626"/>
+        <!-- Define a coluna da área de reprodução -->
+        <Border Grid.Column="1" Background="#1F1F1F"/>
+        <!-- Define a seção inferior, onde os botões e afins estão alocados -->
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#1F1F1F"/>
+        <!-- Define o painel de controle do media player -->
+
+        <!--StackPanel Acima Direita-->
         <StackPanel Grid.Column="1" Margin="10,10,10,10" VerticalAlignment="Center" HorizontalAlignment="Center" >
-            <!-- <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"
-            Name="Playlist"
-            Text="Lançamentos" Margin="0,10,20,10"/> -->
-            <!-- array da classe Videos -->
-            <!-- <TextBlock Foreground="White" FontSize="25" Text="IMAGEM"/> -->
+           
+
+            <!-- Tela inicial do vídeo -->
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <TextBlock Foreground="White" FontSize="30" FontWeight="Bold" Text="Selecione um video" x:Name="titulo" Margin="10,10,10,10"/>
             </StackPanel>
-            <MediaElement x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
+
+            <!-- Elemento de reprodução de mídia -->
+            <MediaElement MaxWidth="700" x:Name="mediaPlayer" HorizontalAlignment="Center" VerticalAlignment="Center"
                 LoadedBehavior="Manual" UnloadedBehavior="Stop"  Margin="20,20,20,20" />
+            <Slider x:Name="slider_seek" Margin="10,10,10,10" Width="700"  Value="0" Maximum="1" Style="{DynamicResource VideoSlider}" />
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2"  Orientation="Horizontal" 
-                VerticalAlignment="Center">
-            <Image Margin="40,5,20,5" Height="50" Width="50"
+
+        <!--StackPanel Abaixo Esquerda-->
+        <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"  VerticalAlignment="Center" Orientation="Horizontal"
+                    Margin="0,0,0,0">
+            <Image HorizontalAlignment="Left" Margin="0,0,10,0"  Height="50" Width="50"
             Source="assets\img\icon.png"/>
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
-                <TextBlock Foreground="White" FontSize="15" Text="Nome da música" Margin="0,0,40,0"/>
-                <TextBlock Foreground="White" FontSize="15" Text="Autor" Margin="0,0,40,0"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock Width="150" VerticalAlignment="Center" Foreground="White" FontSize="15" Text="{Binding SelectedMedia.Name}" />
+                <TextBlock VerticalAlignment="Center" Foreground="#7e7f7f" FontSize="15" Text="{Binding SelectedMedia.Author}" />
+
             </StackPanel>
-        <Button Content="Play" CommandParameter="{Binding}" Command="{Binding Play}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
-        <Button Content="Stop" CommandParameter="{Binding}" Command="{Binding Stop}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
-        <Button Content="Pause" CommandParameter="{Binding}" Command="{Binding Pause}" 
-            HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20,20,20,20" />
         </StackPanel>
+
+        <!--StackPanel Abaixo Direita-->
+        <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal" 
+                VerticalAlignment="Center" HorizontalAlignment="Center" >
+            
+            <!--Controladores de mídia-->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <!--Botão de 'Música Anterior'-->
+                <Button Template="{DynamicResource MouseOverTemplate}" x:Name="PreviousButton" Width="40" Height="40" Foreground="Transparent" Background="Transparent" 
+                        CommandParameter="{Binding}" Command="{Binding Previous}" Style="{DynamicResource CircularButton}" >
+                    <Polygon Margin="11.25,0,0,0" Points="0,0 -12,7.5 -12,0 -13.5,0 -13.5,15 -12,15 -12,7.5 0,15"  Fill="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <!--Botão de Play/Pause-->
+                <ToggleButton x:Name="PlayPauseButton"  Margin="10,0,0,0" Template="{DynamicResource MouseOverTemplate}" Height="50"
+                              Width="50" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+                              Background="Transparent" Style="{DynamicResource PlayPauseButton}" >
+                </ToggleButton>
+                <!--Botão de Parar c/ interação c/ o Botão Play/Pause-->
+                <Button x:Name="StopButton"  Template="{DynamicResource MouseOverTemplate}" Margin="10,0,0,0"  
+                        Width="40" Height="40" Foreground="Transparent" Background="Transparent" 
+                        CommandParameter="{Binding}" Command="{Binding Stop}" Style="{DynamicResource CircularButton}" >
+                    <Polygon Margin="0,0,0,0" Points="0,0 15,0 15,15 0,15"  Fill="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetName="PlayPauseButton"
+                                                                        Storyboard.TargetProperty="IsChecked">
+                                            <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="False" />
+                                        </BooleanAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <!--Botão de 'Próxima Música'-->
+                <Button x:Name="NextButton" Template="{DynamicResource MouseOverTemplate}" Margin="10,0,0,0"  
+                        Width="40" Height="40" Foreground="Transparent" Background="Transparent"
+                        CommandParameter="{Binding}" Command="{Binding Next}" Style="{DynamicResource CircularButton}">
+                    <Polygon Margin="2,0,0,0" Points="0,0 12,7.5 12,0 13.5,0 13.5,15 12,15 12,7.5 0,15"  Fill="White" />
+                </Button>
+                
+                <!--Botão de Volume/Mute c/ integração c/ o Slider de Volume-->
+                <Button x:Name="VolumeButton" Margin="12,0,0,0" Background="Transparent" Foreground="Transparent" 
+                        BorderBrush="Transparent" Height="14" Width="17" VerticalAlignment="Center" 
+                        CommandParameter="{Binding}" Command="{Binding Mute}" Style="{DynamicResource VolumeButton}">
+                    <Grid>
+                        <Polygon VerticalAlignment="Center" Points="0,0 -8,5 0,10" Fill="White" />
+                        <Path VerticalAlignment="Bottom" Margin="-2,0,0,2" Stroke="White" 
+                                Fill="Transparent" Data="M5,0 A5,5,0,0,1,5,5"/>
+                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" 
+                                Fill="Transparent" Data="M7.5,0 A7.5,7.5,0,0,1,7.5,7.5"/>
+                        <Path VerticalAlignment="Center" Margin="-2,0,0,0" Stroke="White" 
+                                Fill="Transparent" Data="M10,0 A10,10,0,0,1,10,10"/>
+                    </Grid>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.Click">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="slider_vol"
+                                         Storyboard.TargetProperty="Value"
+                                         To="0"
+                                         Duration="0:0:0" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Button.Triggers>
+
+                </Button>
+
+               <!--Slider de Volume-->
+                <Slider x:Name="slider_vol" Width="200" Height="18"
+                    Maximum="1" Minimum="0" Orientation="Horizontal"  Style="{DynamicResource VolumeSlider}"
+                    LargeChange="0.1" SmallChange="0.01" Value="0.5" ValueChanged="Slider_vol_ValueChanged">
+                    
+                </Slider>
+            </StackPanel>
+        </StackPanel>
+
+        <!--StackPanel Acima Esquerda-->
         <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Top">
+            <!-- Logo e título do aplicativo -->
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                 <Image Margin="20,20,20,20" Height="80" Width="80"
                 Source="assets\img\icon.png"/>
                 <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="35" Text="Songfy"/>
             </StackPanel>
-            <TextBlock Foreground="White" FontSize="30" FontWeight="Bold"
+            <TextBlock Foreground="White" FontSize="25" FontWeight="Bold" FontFamily="TimesNewRoman"
                 Name="Playlist"
-                Text="Lançamentos" Margin="20,10,20,10"/>
+                Text="LANÇAMENTOS" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+            <!--Lista de Músicas-->
             <ScrollViewer HorizontalScrollBarVisibility="Auto"
-                    VerticalScrollBarVisibility="Auto">
+                    VerticalScrollBarVisibility="Auto" Background="Transparent" Foreground="#262525">
                 <Grid x:Name="grid" MinWidth="200" 
                     Width="{Binding Path=ActualWidth, 
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollContentPresenter}}}">
+                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ScrollContentPresenter}}}" Background="Transparent">
                     <DataGrid ItemsSource="{Binding Medias}"
                         AutoGenerateColumns="False"
                         IsReadOnly="True"
-                        SelectedItem="{Binding SelectedMedia}">
+                        SelectedItem="{Binding SelectedMedia}"
+                        Margin="10,0,10,0"
+                        Style="{DynamicResource MusicList}">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1*"/>
-                            <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="1*"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="1*" />
+                            <DataGridTextColumn Header="Author" Binding="{Binding Author}" Width="1*" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </ScrollViewer>
         </StackPanel>
-
-
-            
-        <!--<Button Margin="20,10,20,10" Height="40" Name="Video11" Foreground="White"
-                FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video1}"
-                >Video 1</Button>
-            <Button Margin="20,10,20,10" Height="40" Name="Video21" Foreground="White"
-                FontWeight="Bold" Background="#323232" CommandParameter="{Binding}" Command="{Binding Video2}"
-                >Video 2</Button>
-            <Button Margin="20,10,20,10" Height="40" Name="Video31" Foreground="White"
-                FontWeight="Bold" Background="#323232"  CommandParameter="{Binding}" Command="{Binding Video3}" 
-                >Video 3</Button>
-        </StackPanel>  --> 
-     <!-- <MenuItem Grid.Column ="1" x:Name="MenuSuperiorEsquerdo" 
-                Background="#787276" VerticalAlignment="Top" HorizontalAlignment="Right"
-                Height="50">
-        <MenuItem.Header>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
-                    <TextBlock Foreground="White" FontSize="25" Text="AQUI ESTÁ O MENU Header"/>
-                    <Image Source="MediaPlayerINF0996/assets/img/icon.png"  Height="30"
-                    Margin="20,0,0,0" />
-                </StackPanel>
-        </MenuItem.Header>
-            <MenuItem.ContextMenu>
-                <ContextMenu Background="#1f3d7a" BorderThickness="0" Padding="0">
-                    <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Opções">
-                         <MenuItem.Icon>
-                            <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\opcoes.png" Width="24" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem Background="#1f3d7a" BorderThickness="0" FontWeight="Bold" FontSize="14" Header="Sair" >
-                        <MenuItem.Icon>
-                            <Image Source="D:\Bonacin\ICUnicamp\Curso_Samsung_MS_2023\Dev_Interface\Exemplos_Aula1\PrevTempo\Assets\Sair.png" Width="24" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </ContextMenu>
-            </MenuItem.ContextMenu>
-        </MenuItem> -->
     </Grid>
 </Window>

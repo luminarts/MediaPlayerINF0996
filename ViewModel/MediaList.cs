@@ -4,10 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
-using System.Globalization;
 using System.IO;
-using System.Windows.Markup.Primitives;
-using System.Windows.Controls;
 using System;
 
 namespace MediaPlayerINF0996.ViewModel
@@ -24,15 +21,18 @@ namespace MediaPlayerINF0996.ViewModel
                 Play.NotifyCanExecuteChanged();
                 Stop.NotifyCanExecuteChanged();
                 Pause.NotifyCanExecuteChanged();
+                Previous.NotifyCanExecuteChanged();
+                Next.NotifyCanExecuteChanged();
+                Mute.NotifyCanExecuteChanged();
             }
         }
         public ObservableCollection<Media> Medias { get; set; }
         public RelayCommand Play { get; set; }
         public RelayCommand Pause {get; set;}
         public RelayCommand Stop {get; set;}
-        public RelayCommand Video1 {get; set;}
-        public RelayCommand Video2 {get; set;}
-        public RelayCommand Video3 {get; set;}
+        public RelayCommand Previous {get; set;}
+        public RelayCommand Next {get; set;}
+        public RelayCommand Mute {get; set;}
         public MediaList()
         {
             Medias = new ObservableCollection<Media>();
@@ -40,9 +40,10 @@ namespace MediaPlayerINF0996.ViewModel
             Play = new RelayCommand(PlayCommand, CanPlayCommand);
             Stop = new RelayCommand(StopCommand, CanStopCommand);
             Pause = new RelayCommand(PauseCommand, CanPauseCommand);
-            Video1 = new RelayCommand(Video1Command);
-            Video2 = new RelayCommand(Video2Command);
-            Video3 = new RelayCommand(Video3Command);
+            Previous = new RelayCommand(PreviousCommand, CanPreviousCommand);
+            Next = new RelayCommand(NextCommand, CanNextCommand);
+            Mute = new RelayCommand(MuteCommand, CanMuteCommand);
+            
         }
 
         private void PrepareListCollection()
@@ -73,10 +74,13 @@ namespace MediaPlayerINF0996.ViewModel
             Medias.Add(media3);
         }
 
+        
+
         private void PlayCommand()
         {
             WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
             WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
+            
         }
 
         public bool CanPlayCommand()
@@ -87,6 +91,7 @@ namespace MediaPlayerINF0996.ViewModel
         private void StopCommand()
         {
             WeakReferenceMessenger.Default.Send(new StopRequestedMessage());
+            
         }
 
         public bool CanStopCommand()
@@ -97,6 +102,7 @@ namespace MediaPlayerINF0996.ViewModel
         private void PauseCommand()
         {
             WeakReferenceMessenger.Default.Send(new PauseRequestedMessage());
+            
         }
 
         public bool CanPauseCommand()
@@ -104,61 +110,65 @@ namespace MediaPlayerINF0996.ViewModel
             return SelectedMedia != null;
         }
 
-        private void Video1Command()
+        public void PreviousCommand()
         {
-            SelectedMedia = Medias[0];
-            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
-            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
+            StopCommand();
+            SelectedMedia = Medias[Medias.IndexOf(SelectedMedia) == 0 ? Medias.Count-1 : Medias.IndexOf(SelectedMedia)-1];
+            PlayCommand();
         }
 
-        private void Video2Command()
+        public bool CanPreviousCommand()
         {
-            SelectedMedia = Medias[1];
-            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
-            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
+            return SelectedMedia != null;
         }
 
-        private void Video3Command()
+        public void NextCommand()
         {
-            SelectedMedia = Medias[2];
-            WeakReferenceMessenger.Default.Send(new SetNewMediaMessage(SelectedMedia));
-            WeakReferenceMessenger.Default.Send(new PlayRequestedMessage());
+            StopCommand();
+            SelectedMedia = Medias[Medias.IndexOf(SelectedMedia) == Medias.Count-1 ? 0 : Medias.IndexOf(SelectedMedia)+1];
+            PlayCommand();
         }
 
-        public class PlayRequestedMessage
+        public bool CanNextCommand()
         {
-            // Pode adicionar propriedades adicionais, se necessário
+            return SelectedMedia != null;
         }
 
-        public class StopRequestedMessage
+        private bool isMuted;
+        public bool IsMuted
         {
-            // Pode adicionar propriedades adicionais, se necessário
+            get { return isMuted; }
+            set {
+                if (isMuted != value)
+                {
+                    isMuted = value;
+                    OnPropertyChanged(nameof(IsMuted));
+                }
+            }
         }
 
-        public class PauseRequestedMessage
+        public void MuteCommand()
         {
-            // Pode adicionar propriedades adicionais, se necessário
+           WeakReferenceMessenger.Default.Send(new MuteRequestedMessage());
+            IsMuted = !IsMuted;
         }
+
+        public bool CanMuteCommand()
+        {
+            return SelectedMedia != null;
+        }
+
+        public class PlayRequestedMessage{}
+
+        public class StopRequestedMessage{}
+
+        public class PauseRequestedMessage {}
 
         public class SetNewMediaMessage : ValueChangedMessage<Media>
         {
             public SetNewMediaMessage(Media media) : base(media) {}        
         }
 
-
-        /*private void Video2(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\teste.mp4");
-            MediaPlayerINF0996.MainWindow.titulo.Text = "Sinos";
-            mediaPlayer.Play();
-        }
-
-        private void Video3(object sender, RoutedEventArgs e)
-        {
-            mediaPlayer.Source = new Uri("C:\\Users\\sathy\\OneDrive\\Área de Trabalho\\trabalhoUI\\projeto\\assets\\videos\\videoplayback.mp4");
-            titulo.Text = "CG5 - Hi";
-            mediaPlayer.Play();
-        }*/
-
+        public class MuteRequestedMessage{}
     }
 }

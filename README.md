@@ -15,7 +15,6 @@ Criar um Media Player (tocador de vídeos) utilizando o WPF com XAML e C# que pe
 
 ## Arquitetura da aplicação
 A aplicação foi desenvolvida no padrão de arquitetura Model-View-ViewModel(MVVM).
-Aqui estão alguns trechos de código que demonstram como usar determinadas funcionalidades do media player:
 
 ## Descrição das classes principais
 - Classe MainWindow (View):
@@ -54,7 +53,8 @@ Cada propriedade utiliza o método SetProperty para notificar as alterações e 
 Essas classes são responsáveis por definir a lógica e a estrutura do media player, incluindo a interface do usuário, a manipulação de eventos e a reprodução de mídia.
 
 ## Funcionamento do sistema
-- <img width="960" alt="image" src="https://github.com/luminarts/MediaPlayerINF0996/assets/100354416/027931be-e56f-4e07-a151-5f4de6217267">
+- <img width="960" alt="image" src="https://github.com/luminarts/MediaPlayerINF0996/assets/100354416/4f4be287-0974-4096-9603-096bc3e7b358">
+
 
 <br>
 No aplicativo Songfy é possível assistir vídeos a partir de uma lista de mídias pré-selecionadas.

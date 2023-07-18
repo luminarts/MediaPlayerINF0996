@@ -15,7 +15,7 @@
         </Style>
 
         <!-- Define um estilo para botões com formato circular -->
-        <Style x:Key="CircularButton">
+        <Style x:Key="VolumeButton">
             <Style.Resources>
                 <Style TargetType="Border">
                     <Style.Triggers>
@@ -26,11 +26,6 @@
                     </Style.Triggers>
                 </Style>
             </Style.Resources>
-            <Setter Property="Command" Value="{Binding Mute}" />
-            <Setter Property="CommandParameter" Value="{Binding}" />
-            
-            
-
         </Style>
 
         <!-- Define um estilo personalizado para o controle slider de volume -->

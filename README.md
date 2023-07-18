@@ -12,6 +12,8 @@ Criar um Media Player (tocador de vídeos) utilizando o WPF com XAML e C# que pe
 - Abra o projeto com o VS Code ou Visual Studio
 - Abra o terminal e verifique se o mesmo encontra-se na pasta ```MediaPlayerINF0996/```
 - Execute o projeto pelo terminal com o comando ```dotnet run```
+### Método direto
+- execute o arquivo em [MediaPlayerINF0996.exe](bin/)
 
 ## Arquitetura da aplicação
 A aplicação foi desenvolvida no padrão de arquitetura Model-View-ViewModel(MVVM).

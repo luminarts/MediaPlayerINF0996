@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\tiago\\Documents\\Tiago\\Unicamp\\Curso-MSFT-Microsoft\\INF-0996\\MediaPlayerINF0996\\MediaPlayerINF0996.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\tiago\\Documents\\Tiago\\Unicamp\\Curso-MSFT-Microsoft\\INF-0996\\MediaPlayerINF0996\\MediaPlayerINF0996.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tiago\\Documents\\Tiago\\Unicamp\\Curso-MSFT-Microsoft\\INF-0996\\MediaPlayerINF0996\\MediaPlayerINF0996.csproj",
+        "projectName": "MediaPlayerINF0996",
+        "projectPath": "C:\\Users\\tiago\\Documents\\Tiago\\Unicamp\\Curso-MSFT-Microsoft\\INF-0996\\MediaPlayerINF0996\\MediaPlayerINF0996.csproj",
+        "packagesPath": "C:\\Users\\tiago\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tiago\\Documents\\Tiago\\Unicamp\\Curso-MSFT-Microsoft\\INF-0996\\MediaPlayerINF0996\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tiago\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.411\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

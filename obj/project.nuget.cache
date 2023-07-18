@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "wUAZDnI6gS0QsClaOVYaAS1fxaKTMYh+KbqHP9a9dEl0WCJNAHVVdGiCLCUpvfl3yTe2Skd5T4jSdisZrPveLg==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\tiago\\Documents\\Tiago\\Unicamp\\Curso-MSFT-Microsoft\\INF-0996\\MediaPlayerINF0996\\MediaPlayerINF0996.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tiago\\.nuget\\packages\\communitytoolkit.mvvm\\8.2.0\\communitytoolkit.mvvm.8.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}
